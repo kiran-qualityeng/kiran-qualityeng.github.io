@@ -43,7 +43,8 @@
     .avatar img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-body{flex:1;min-width:0}
     h1.name{margin:0;font-size:1.6rem;color:var(--primary);letter-spacing:0.6px}
-    .subtitle{color:var(--muted);margin-top:6px;font-size:0.95rem}
+    .role{margin-top:6px;font-weight:700;color:var(--primary)}
+    .subrole{margin-top:6px;color:var(--muted);font-size:0.95rem}
     .actions{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
     .btn{
       display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;
@@ -66,7 +67,7 @@
     p.lead{color:var(--primary);line-height:1.6;margin:0}
 
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .skills-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .skills-list{display:flex;flex-direction:column;gap:6px;margin-top:10px}
     .chip{background:transparent;border:1px solid rgba(36,123,160,0.12);color:var(--primary);padding:8px 10px;border-radius:999px;font-weight:600}
 
     /* Projects */
@@ -115,20 +116,22 @@
   <div class="wrap">
     <header class="hero animate" role="banner" aria-labelledby="hero-name">
       <div class="avatar" aria-hidden="true">
-        <!-- Use the provided profile picture file - upload it to repo path /images/profile.jpg -->
-        <img src="images/profile.jpg" alt="Seelam Durga Kiran">
+        <!-- Simple changeable profile picture: place your image at images/profile.jpg.
+             If not provided, the onerror fallback will show a GitHub avatar placeholder. -->
+        <img src="images/profile.jpg" alt="Seelam Durga Kiran" onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/9919?s=200&v=4'">
       </div>
 
       <div class="hero-body">
         <h1 id="hero-name" class="name">SEELAM DURGA KIRAN</h1>
-        <div class="subtitle">Email: <a href="mailto:sdkiran.qualityengineer@gmail.com">sdkiran.qualityengineer@gmail.com</a>  |  Mobile: +91 9000707631  |  Rajahmundry, India</div>
+        <div class="role">Quality Assurance Engineer</div>
+        <div class="subrole">Manual Testing • API Testing • Test Automation</div>
 
         <div class="actions">
           <a class="btn" href="Kiran_ATS_Resume.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download resume">⤓ Download Resume</a>
           <a class="btn alt" href="mailto:sdkiran.qualityengineer@gmail.com" aria-label="Email">✉ Send Email</a>
           <div class="contact" aria-hidden="false">
-            <div style="font-weight:700;color:var(--primary)">Quality Assurance Engineer</div>
-            <div class="small" style="color:var(--muted)">Selenium (Java) • API Testing • Test Automation • JIRA • Zephyr</div>
+            <div style="font-weight:700;color:var(--primary)">Rajahmundry, India</div>
+            <div class="small" style="color:var(--muted)">+91 9000707631</div>
           </div>
         </div>
       </div>
@@ -141,28 +144,25 @@
         <p class="lead">Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual and API Testing, now expanding into Test Automation. Proven expertise in end-to-end testing, test planning, defect management, and Agile methodologies. Hands-on experience in Selenium-Java scripting and improving test efficiency, coverage, and collaboration within cross-functional teams to ensure high-quality software releases.</p>
       </section>
 
-      <!-- Skills & Achievements -->
-      <section class="card animate" id="skills" aria-labelledby="skills-title">
-        <h2 id="skills-title" class="section-title">Technical Skills & Achievements</h2>
+      <!-- Technical Skills (added in full as requested) -->
+      <section class="card animate" id="technical-skills" aria-labelledby="skills-title">
+        <h2 id="skills-title" class="section-title">Technical Skills</h2>
         <div class="grid-2">
           <div>
-            <h3 style="margin:0;color:var(--secondary)">Technical Skills</h3>
+            <h3 style="margin:0;color:var(--secondary)">Testing & Automation</h3>
             <div class="skills-list">
-              <span class="chip">Manual & Functional Testing</span>
-              <span class="chip">API Testing (Postman)</span>
-              <span class="chip">Selenium WebDriver (Java)</span>
-              <span class="chip">Playwright • TestNG • Maven</span>
-              <span class="chip">JIRA • Zephyr • ADO • Git</span>
+              <div><strong>Manual & Functional Testing:</strong> Test Planning & Strategy, Test Case Design, Functional, Integration, System, Regression, Smoke, Sanity, UI, Cross-Browser, UAT</div>
+              <div><strong>API Testing:</strong> Postman, Swagger, REST API, JSON/XML Validation</div>
+              <div><strong>Test Automation (Basic):</strong> Selenium WebDriver (Java), Playwright, TestNG, Maven, Page Object Model (POM)</div>
             </div>
           </div>
           <div>
-            <h3 style="margin:0;color:var(--secondary)">Key Achievements</h3>
-            <ul style="margin-top:10px;color:var(--primary)">
-              <li>Reduced production bug leakage by 25% via improved regression suites and smoke testing.</li>
-              <li>Authored and executed 300+ manual test cases; achieved 98% coverage vs business requirements.</li>
-              <li>Streamlined defect lifecycle in JIRA, achieving 95% on-time resolution for critical issues.</li>
-              <li>Built initial Selenium-Java scripts to accelerate regression automation adoption.</li>
-            </ul>
+            <h3 style="margin:0;color:var(--secondary)">Tools, Methodologies & Soft Skills</h3>
+            <div class="skills-list">
+              <div><strong>Tools & Platforms:</strong> JIRA, Zephyr, TFS, Azure DevOps (ADO), Git, WinSCP, CI/CD Awareness, Figma</div>
+              <div><strong>Methodologies:</strong> Agile Scrum, Waterfall, STLC, SDLC</div>
+              <div><strong>Soft Skills:</strong> Analytical Thinking, Problem-Solving, Effective Communication, Cross-functional Collaboration</div>
+            </div>
           </div>
         </div>
       </section>
@@ -191,11 +191,6 @@
             <li>Performed regression testing across builds and environments to identify critical issues.</li>
           </ul>
         </div>
-
-        <div style="margin-top:12px;color:var(--primary)">
-          <strong>Education:</strong> Bachelor of Technology – Mechanical Engineering, Godavari Institute of Engineering & Technology (JNTUK), 2012 – 2016
-        </div>
-        <div style="margin-top:8px;color:var(--primary)"><strong>Languages:</strong> English (Professional) | Telugu (Native) | Hindi (Conversational)</div>
       </section>
 
       <!-- Projects (without test cases inline; Mock Project removed) -->
@@ -479,17 +474,25 @@
               </ol>
             </div>
 
-            <!-- Critical Thinking overview -->
-            <div class="tc">
-              <h4>Analytical Testing & Critical Thinking — Advanced QA Scenarios</h4>
-              <div class="meta-row"><div>Priority: Informational</div><div>Focus: Risk-based & exploratory testing</div></div>
-              <p style="margin:8px 0;color:var(--primary)">This collection demonstrates proactive testing — exploring edge cases, failure modes, integration resilience, and UX recovery scenarios. Use these cases to strengthen test plans, risk analysis, and automation prioritization.</p>
-            </div>
-
           </div>
         </div>
 
       </section>
+
+      <!-- Education & Languages (kept at the end as requested) -->
+      <section class="card animate" id="edu-lang" aria-labelledby="edu-lang-title">
+        <h2 id="edu-lang-title" class="section-title">Education & Languages</h2>
+        <div style="color:var(--primary);margin-bottom:10px">
+          <strong>Education</strong>
+          <div style="color:var(--muted);margin-top:6px">Bachelor of Technology – Mechanical Engineering<br>Godavari Institute of Engineering & Technology (JNTUK), 2012 – 2016</div>
+        </div>
+
+        <div style="color:var(--primary);margin-top:8px">
+          <strong>Languages</strong>
+          <div style="color:var(--muted);margin-top:6px">English (Professional) | Telugu (Native) | Hindi (Conversational)</div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="animate" role="contentinfo">
