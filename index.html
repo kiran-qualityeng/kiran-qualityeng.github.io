@@ -1,166 +1,40 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Seelam Durga Kiran - Portfolio</title>
-  <meta name="description" content="Portfolio - Projects & Test Cases" />
-  <style>
-    /* Basic page layout to host the Projects section */
-    body { font-family: Arial, sans-serif; margin: 0; padding: 24px; background: #f4f6f8; color: #111; }
-    .container { max-width: 1000px; margin: 0 auto; }
-    h2 { margin-top: 0; }
-    /* Project card visuals (kept consistent with inline styles) */
-    .project-card { border:1px solid #ddd; padding:20px; margin:20px 0; border-radius:10px; background:#f9f9f9; box-shadow:0 4px 8px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
-    .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-    table { border-collapse: collapse; width: 100%; transition: box-shadow 0.3s ease; }
-    table th, table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-    table th { background: #f2f6fb; color: #0073e6; }
-    /* Animation */
-    .animate { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-    .animate.show { opacity: 1; transform: translateY(0); }
-    @media (max-width:600px) {
-      body { padding: 12px; }
-      .project-card { padding: 14px; margin: 14px 0; }
-      table th, table td { padding: 6px; font-size: 14px; }
-      table, thead, tbody, th, td, tr { display: block; }
-      thead { display: none; }
-      tr { margin-bottom: 12px; border: 1px solid #e6e6e6; border-radius: 6px; padding: 8px; }
-      td { border: none; padding: 6px 0; }
-      td:before { 
-        content: attr(data-label);
-        display: inline-block;
-        width: 140px;
-        font-weight: 600;
-        color: #0073e6;
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kiran | QA & QE Engineer</title>
+<style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+    .container { max-width: 800px; margin: auto; background: #fff; padding: 30px; border-radius: 10px; }
+    h1 { color: #222; }
+    p { font-size: 18px; line-height: 1.6; }
+    .section { margin-top: 25px; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <section id="projects">
-      <h2 style="text-align:center;color:#0073e6;">Projects & Test Cases</h2>
+<div class="container">
+    <h1>Kiran — QA / QE Engineer</h1>
+    <p>Experienced Manual & Automation Testing Professional with strong expertise in QA, QE, AEM, API Testing, and Java/Selenium. 
+    Passionate about delivering high‑quality products and continuous improvement.</p>
 
-      <!-- Project 1 -->
-      <div class="project-card animate">
-        <h3>UFH – UPS United Postal Services</h3>
-        <p><strong>Role:</strong> QA Engineer | <strong>Technologies:</strong> Selenium (Java), Postman, JIRA, Zephyr</p>
+    <div class="section">
+        <h2>Skills</h2>
         <ul>
-          <li>Designed and executed detailed manual & automation test cases.</li>
-          <li>Performed end-to-end Functional, Regression, API, and UI Testing.</li>
-          <li>Validated APIs using Postman; tracked defects in JIRA ensuring full lifecycle coverage.</li>
-          <li>Improved test coverage & reduced regression time by 35% through automation scripts.</li>
+            <li>Manual Testing</li>
+            <li>Automation (Basics)</li>
+            <li>API Testing</li>
+            <li>Java, Selenium, JavaScript</li>
+            <li>AEM Authoring</li>
+            <li>Problem-Solving & Quick Learning</li>
         </ul>
-        <p><strong>Sample Test Cases:</strong></p>
-        <table cellpadding="5" cellspacing="0" role="table" aria-label="UFH sample test cases">
-          <thead>
-            <tr><th>ID</th><th>Test Case</th><th>Expected Result</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="ID">TC001</td>
-              <td data-label="Test Case">Verify login functionality with valid credentials</td>
-              <td data-label="Expected Result">User should login successfully</td>
-            </tr>
-            <tr>
-              <td data-label="ID">TC002</td>
-              <td data-label="Test Case">Verify shipment tracking API returns correct status</td>
-              <td data-label="Expected Result">API returns 200 OK with valid JSON response</td>
-            </tr>
-            <tr>
-              <td data-label="ID">TC003</td>
-              <td data-label="Test Case">Check cross-browser rendering for homepage</td>
-              <td data-label="Expected Result">Homepage loads correctly in Chrome, Firefox, Edge</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    </div>
 
-      <!-- Project 2 -->
-      <div class="project-card animate">
-        <h3>Boven Technologies – AIOps Dashboard</h3>
-        <p><strong>Role:</strong> QA Analyst | <strong>Technologies:</strong> Manual Testing, Selenium, API Validation, JIRA</p>
-        <ul>
-          <li>Executed manual testing for web-based dashboards ensuring defect-free release.</li>
-          <li>Performed regression testing for each build and validated fixes across environments.</li>
-          <li>Logged defects with detailed steps and screenshots in JIRA for developer tracking.</li>
-          <li>Supported UAT with clear test scenarios and end-to-end validation.</li>
-        </ul>
-        <p><strong>Sample Test Cases:</strong></p>
-        <table cellpadding="5" cellspacing="0" role="table" aria-label="Boven sample test cases">
-          <thead>
-            <tr><th>ID</th><th>Test Case</th><th>Expected Result</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="ID">TC101</td>
-              <td data-label="Test Case">Verify dashboard widgets load correctly</td>
-              <td data-label="Expected Result">All widgets display accurate data</td>
-            </tr>
-            <tr>
-              <td data-label="ID">TC102</td>
-              <td data-label="Test Case">Check API response for alert notifications</td>
-              <td data-label="Expected Result">Alerts received correctly in JSON response</td>
-            </tr>
-            <tr>
-              <td data-label="ID">TC103</td>
-              <td data-label="Test Case">Validate report download functionality</td>
-              <td data-label="Expected Result">Reports download as PDF/CSV without errors</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="project-card animate">
-        <h3>Mock Project – E-Commerce QA</h3>
-        <p><strong>Role:</strong> QA Engineer | <strong>Technologies:</strong> Selenium (Java), Postman, Jira</p>
-        <ul>
-          <li>Created test cases for user registration, product search, checkout, and payment modules.</li>
-          <li>Performed API testing for order management and inventory endpoints.</li>
-          <li>Logged and tracked defects ensuring full lifecycle closure.</li>
-          <li>Implemented basic automation scripts to validate repetitive flows.</li>
-        </ul>
-        <p><strong>Sample Test Cases:</strong></p>
-        <table cellpadding="5" cellspacing="0" role="table" aria-label="E-Commerce sample test cases">
-          <thead>
-            <tr><th>ID</th><th>Test Case</th><th>Expected Result</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td data-label="ID">TC201</td>
-              <td data-label="Test Case">Verify user registration with valid details</td>
-              <td data-label="Expected Result">User account created successfully</td>
-            </tr>
-            <tr>
-              <td data-label="ID">TC202</td>
-              <td data-label="Test Case">Validate product search returns correct results</td>
-              <td data-label="Expected Result">Search results match product keywords</td>
-            </tr>
-            <tr>
-              <td data-label="ID">TC203</td>
-              <td data-label="Test Case">Check checkout process with credit card</td>
-              <td data-label="Expected Result">Payment processed and order confirmed</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-    </section>
-  </div>
-
-  <script>
-    // Fade-in on scroll
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
-  </script>
+    <div class="section">
+        <h2>Contact</h2>
+        <p>Email: kiran@example.com</p>
+    </div>
+</div>
 </body>
 </html>
