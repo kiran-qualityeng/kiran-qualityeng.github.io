@@ -4,50 +4,53 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Seelam Durga Kiran — QA Engineer</title>
-  <meta name="description" content="Seelam Durga Kiran — Quality Assurance Engineer. Resume, projects and test cases." />
+  <meta name="description" content="Seelam Durga Kiran — Quality Assurance Engineer. Projects, test cases, and resume." />
   <meta name="theme-color" content="#50514F" />
-
   <style>
     :root{
       --primary:#50514F;      /* Charcoal Gray */
       --secondary:#247BA0;    /* Steel Blue */
       --accent:#FDFFFC;       /* Cream White */
       --muted:#8E8E8E;        /* Medium Gray */
+      --glass: rgba(36,123,160,0.06);
       --container:1100px;
       --radius:12px;
-      --glass: rgba(36,123,160,0.06);
       --accent-cta: linear-gradient(90deg,#247BA0,#2FA4D9);
     }
+
+    /* Reset & basics */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(180deg,#f6f8f9 0%,var(--accent) 100%);
-      color:var(--primary); padding:32px;
+      margin:0;
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(180deg, #f5f7f8 0%, var(--accent) 100%);
+      color:var(--primary);
+      padding:36px 20px;
       -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
     .wrap{max-width:var(--container);margin:0 auto;position:relative;z-index:1}
 
     /* PRELOADER / WELCOME OVERLAY */
     .overlay{
       position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;
-      background:linear-gradient(180deg, rgba(37,61,80,0.06), rgba(255,255,255,0.02));
+      background:linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.06));
       backdrop-filter: blur(6px);
-      transition:opacity .4s ease, visibility .4s ease;
+      transition:opacity .45s ease, visibility .45s ease;
     }
     .overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
     .welcome-card{
-      width:min(920px,94%);border-radius:14px;padding:26px;background:var(--accent);
-      box-shadow:0 30px 70px rgba(37,61,80,0.08);display:flex;gap:20px;align-items:center;overflow:hidden;
-      transform:translateY(6px);animation:cardIn .65s cubic-bezier(.2,.9,.2,1) both;
+      width:min(920px,94%);max-width:1000px;border-radius:14px;padding:26px;background:rgba(253,255,252,0.98);
+      box-shadow:0 30px 70px rgba(37,61,80,0.12);display:flex;gap:20px;align-items:center;overflow:hidden;
+      transform:translateY(8px);animation:cardIn .7s cubic-bezier(.2,.9,.2,1) both;
     }
     @keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-
     .welcome-left{flex:0 0 140px;display:grid;place-items:center}
     .welcome-avatar{width:120px;height:120px;border-radius:999px;overflow:hidden;border:6px solid var(--secondary);background:var(--primary)}
-    .welcome-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .welcome-avatar img{width:100%;height:100%;object-fit:cover}
     .welcome-body{flex:1}
-    .welcome-title{margin:0;font-size:1.35rem;color:var(--primary);font-weight:800}
+    .welcome-title{margin:0;font-size:1.4rem;color:var(--primary);font-weight:800}
     .welcome-sub{color:var(--muted);margin-top:6px}
     .welcome-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
     .small-cta{padding:10px 14px;border-radius:10px;background:var(--accent-cta);color:var(--accent);text-decoration:none;font-weight:700;display:inline-flex;gap:8px;align-items:center}
@@ -57,7 +60,7 @@
     /* visiting card modal */
     .vcard{
       position:fixed;right:20px;top:20px;width:320px;border-radius:12px;padding:16px;background:var(--accent);
-      box-shadow:0 18px 46px rgba(37,61,80,0.12);z-index:10001;transform:translateY(-10px);opacity:0;transition:all .36s ease;
+      box-shadow:0 18px 46px rgba(37,61,80,0.12);z-index:10001;transform:translateY(-20px);opacity:0;transition:all .36s ease;
     }
     .vcard.open{transform:none;opacity:1}
     .vcard .row{display:flex;gap:12px;align-items:center}
@@ -65,25 +68,43 @@
     .vcard .meta{color:var(--muted);font-size:0.92rem;margin-top:4px}
     .vcard .vc-actions{margin-top:10px;display:flex;gap:8px}
 
-    /* decorative background */
-    .page-decor{position:fixed;right:-8%;top:-6%;width:520px;height:520px;pointer-events:none;opacity:0.06;background:conic-gradient(from 200deg at 50% 50%, var(--secondary), transparent 40%);filter:blur(32px);z-index:0;border-radius:50%}
+    /* decorative background shapes */
+    .page-decor{
+      position:fixed;right:-8%;top:-6%;width:520px;height:520px;pointer-events:none;opacity:0.06;
+      background:conic-gradient(from 200deg at 50% 50%, var(--secondary), transparent 40%);
+      filter:blur(32px);z-index:0;border-radius:50%;
+    }
 
     /* Hero */
     header.hero{
-      position:relative;z-index:1;display:flex;gap:20px;align-items:center;padding:28px;border-radius:var(--radius);
+      position:relative;z-index:1;
+      display:flex;gap:20px;align-items:center;padding:28px;border-radius:var(--radius);
       background: linear-gradient(180deg, rgba(36,123,160,0.03), rgba(80,81,79,0.01));
-      border:1px solid rgba(80,81,79,0.06);box-shadow:0 10px 40px rgba(16,24,32,0.04);overflow:hidden;
-      transition:transform .28s ease;
+      border:1px solid rgba(80,81,79,0.06);
+      box-shadow: 0 10px 40px rgba(16,24,32,0.04);
+      overflow:hidden;
     }
-    header.hero:hover{transform:translateY(-4px)}
-    .avatar{width:136px;height:136px;border-radius:999px;overflow:hidden;border:6px solid var(--secondary);display:grid;place-items:center;background:var(--accent);flex:0 0 136px;box-shadow:0 8px 28px rgba(36,123,160,0.06);cursor:pointer}
+    /* small animated accent */
+    header.hero::before{
+      content:"";position:absolute;left:-80px;top:-60px;width:260px;height:260px;background:radial-gradient(circle at 30% 30%, rgba(36,123,160,0.06), transparent 30%);transform:rotate(18deg);filter:blur(14px);pointer-events:none;
+    }
+    .avatar{
+      width:136px;height:136px;border-radius:999px;overflow:hidden;border:6px solid var(--secondary);
+      display:grid;place-items:center;background:var(--accent);flex:0 0 136px;
+      box-shadow:0 8px 28px rgba(36,123,160,0.06);
+    }
     .avatar img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-body{flex:1;min-width:0}
     h1.name{margin:0;font-size:1.6rem;color:var(--primary);letter-spacing:0.6px}
     .role{margin-top:8px;font-weight:700;color:var(--primary)}
     .subrole{margin-top:6px;color:var(--muted);font-size:0.95rem}
     .actions{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700;border:none;cursor:pointer;background:var(--secondary);color:var(--accent);box-shadow:0 10px 30px rgba(36,123,160,0.09);transition: transform .18s ease}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;
+      text-decoration:none;font-weight:700;border:none;cursor:pointer;
+      background:var(--secondary);color:var(--accent);box-shadow: 0 10px 30px rgba(36,123,160,0.09);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
     .btn:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(36,123,160,0.12)}
     .btn.alt{background:transparent;color:var(--primary);border:1px solid rgba(80,81,79,0.08);font-weight:700}
     .contact{margin-left:auto;text-align:right;color:var(--primary)}
@@ -91,24 +112,31 @@
 
     /* main layout */
     main{margin-top:22px;display:grid;grid-template-columns:1fr;gap:18px;position:relative;z-index:1}
-    .card{background:var(--accent);padding:18px;border-radius:12px;border:1px solid rgba(80,81,79,0.06);box-shadow:0 8px 28px rgba(16,24,32,0.04);transition:transform .28s ease;overflow:hidden}
+    .card{
+      background:var(--accent);padding:18px;border-radius:12px;border:1px solid rgba(80,81,79,0.06);
+      box-shadow:0 8px 28px rgba(16,24,32,0.04);transition:transform .28s ease,box-shadow .28s ease;
+      overflow:hidden;
+    }
     .card:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(16,24,32,0.06)}
     h2.section-title{margin:0 0 10px 0;color:var(--secondary);font-size:1.05rem;display:flex;align-items:center;gap:12px}
     p.lead{color:var(--primary);line-height:1.6;margin:0}
 
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .skills-list{display:flex;flex-direction:column;gap:6px;margin-top:10px}
     .chip{background:transparent;border:1px solid rgba(36,123,160,0.12);color:var(--primary);padding:8px 10px;border-radius:999px;font-weight:600}
 
     /* project cards */
-    .project-card{background:linear-gradient(180deg,#fff 0%, #fbfbfb 100%);border-radius:10px;padding:16px;border:1px solid rgba(80,81,79,0.06)}
+    .project-card{background:linear-gradient(180deg, #fff 0%, #fbfbfb 100%);border-radius:10px;padding:16px;border:1px solid rgba(80,81,79,0.06)}
     .project-card h3{margin:0;color:var(--primary)}
     .project-card p{margin:8px 0;color:var(--muted)}
     .project-actions{margin-top:8px;display:flex;gap:10px;flex-wrap:wrap}
 
     /* accordion */
     .accordion{margin-top:12px;border-radius:10px;overflow:hidden;border:1px solid rgba(36,123,160,0.08)}
-    .accordion-button{width:100%;text-align:left;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(90deg, rgba(36,123,160,0.02), transparent);border:none;cursor:pointer;font-weight:700;color:var(--primary)}
+    .accordion-button{
+      width:100%;text-align:left;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background:linear-gradient(90deg, rgba(36,123,160,0.02), transparent);border:none;cursor:pointer;font-weight:700;color:var(--primary);
+    }
     .accordion-button:focus{outline:3px solid rgba(36,123,160,0.12);outline-offset:3px}
     .accordion-content{max-height:0;overflow:hidden;transition:max-height .36s ease,padding .24s ease;padding:0 16px}
     .accordion-content.open{padding:16px;max-height:4000px}
@@ -117,7 +145,7 @@
     .meta-row{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:0.9rem;margin-bottom:8px}
     .tc ol{margin:8px 0 0 18px;color:var(--primary)}
 
-    /* icons & animations */
+    /* icons */
     .icon{width:20px;height:20px;display:inline-block;vertical-align:middle}
     .icon.rotate svg{animation:rotate 6s linear infinite}
     .icon.pulse svg{animation:pulse 1.8s ease-in-out infinite}
@@ -126,11 +154,20 @@
     @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
     @keyframes bounce{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
 
-    /* responsive */
-    @media (max-width:920px){ .grid-2{grid-template-columns:1fr} .contact{margin-left:0;margin-top:8px;text-align:left} header.hero{flex-direction:column;align-items:flex-start} .vcard{right:12px;left:12px;top:auto;bottom:12px;width:auto} }
-    @media (max-width:520px){ body{padding:18px} .avatar{width:96px;height:96px} h1.name{font-size:1.25rem} }
+    /* small screens */
+    @media (max-width:920px){ .grid-2{grid-template-columns:1fr} .contact{margin-left:0;margin-top:8px;text-align:left} header.hero{flex-direction:column;align-items:flex-start} }
+    @media (max-width:520px){
+      body{padding:20px}
+      .avatar{width:96px;height:96px}
+      h1.name{font-size:1.25rem}
+      table, thead, tbody, th, td, tr { display: block; }
+      thead { display: none; }
+      tr { margin-bottom: 12px; border: 1px solid rgba(80,81,79,0.04); border-radius: 8px; padding: 8px; }
+      td { border: none; padding: 6px 0; }
+      td:before { content: attr(data-label); display:inline-block; width:120px; color:var(--secondary); font-weight:700; }
+    }
 
-    /* entrance */
+    /* subtle entrance */
     .animate{opacity:0;transform:translateY(8px);transition:all .7s cubic-bezier(.2,.9,.2,1)}
     .animate.show{opacity:1;transform:none}
 
@@ -139,7 +176,7 @@
   </style>
 </head>
 <body>
-  <!-- welcome overlay (shown while loading) -->
+  <!-- overlay while loading + welcome banner -->
   <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-label="Welcome">
     <div class="welcome-card" role="document">
       <div class="welcome-left">
@@ -150,18 +187,16 @@
       <div class="welcome-body">
         <h2 class="welcome-title">Welcome — Seelam Durga Kiran</h2>
         <div class="welcome-sub">Quality Assurance Engineer — Manual Testing • API Testing • Test Automation</div>
-
         <div class="welcome-actions">
-          <a href="Kiran_ATS_Resume.pdf" class="small-cta" download target="_blank" rel="noopener">Download Resume</a>
+          <a href="SDKiran.QAEngineer.pdf" class="small-cta" download target="_blank" rel="noopener">Download Resume</a>
           <a href="#" class="secondary-cta" id="open-vcard-overlay">View Visiting Card</a>
         </div>
-
-        <div class="welcome-note">Quick contact and resume preview before the page content loads — click the avatar or "View Visiting Card".</div>
+        <div class="welcome-note">This quick visiting card appears before the page loads — click "View Visiting Card" to open contact details. The site will finish loading behind this screen.</div>
       </div>
     </div>
   </div>
 
-  <!-- visiting card -->
+  <!-- visiting card (modal-like, appears when avatar clicked) -->
   <div id="vcard" class="vcard" role="dialog" aria-modal="false" aria-hidden="true" style="display:none">
     <div class="row">
       <div style="width:56px;height:56px;border-radius:999px;overflow:hidden;border:3px solid var(--secondary)">
@@ -178,7 +213,7 @@
       <div class="meta">Email: <a class="email" href="mailto:sdkiran.qualityengineer@gmail.com">sdkiran.qualityengineer@gmail.com</a></div>
       <div class="meta">Mobile: <strong style="color:var(--primary)">+91 9000707631</strong></div>
       <div class="vc-actions">
-        <a class="btn" href="Kiran_ATS_Resume.pdf" download target="_blank" rel="noopener">⤓ Resume</a>
+        <a class="btn" href="SDKiran.QAEngineer.pdf" download target="_blank" rel="noopener">⤓ Resume</a>
         <a class="btn alt" href="mailto:sdkiran.qualityengineer@gmail.com">✉ Email</a>
       </div>
     </div>
@@ -198,7 +233,7 @@
         <div class="subrole">Manual Testing • API Testing • Test Automation</div>
 
         <div class="actions">
-          <a class="btn" href="Kiran_ATS_Resume.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download resume">⤓ Download Resume</a>
+          <a class="btn" href="SDKiran.QAEngineer.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download resume">⤓ Download Resume</a>
           <a class="btn alt" href="mailto:sdkiran.qualityengineer@gmail.com" aria-label="Email">✉ Send Email</a>
           <div class="contact" aria-hidden="false">
             <div style="font-weight:700;color:var(--primary)">Rajahmundry, India</div>
@@ -209,87 +244,79 @@
     </header>
 
     <main>
-      <!-- PROFESSIONAL SUMMARY (exact text and order as provided) -->
-      <section class="card animate" id="professional-summary" aria-labelledby="ps-title">
-        <h2 id="ps-title" class="section-title">
-          <span class="icon rotate" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm1 15h-2v-6h2zm0-8h-2V7h2z" fill="#247BA0"/></svg>
-          </span>
-          PROFESSIONAL SUMMARY
-        </h2>
-
-        <p class="lead" style="margin-top:10px;">
-Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual and API Testing, now expanding into Test Automation. Proven expertise in end-to-end testing, test planning, defect management, and Agile methodologies. Hands-on experience in Selenium-Java scripting and improving test efficiency, coverage, and collaboration within cross-functional teams to ensure high-quality software releases.
-        </p>
-      </section>
-
-      <!-- TECHNICAL SKILLS (exact text and order as provided) -->
-      <section class="card animate" id="technical-skills" aria-labelledby="ts-title">
-        <h2 id="ts-title" class="section-title">
-          <span class="icon pulse" aria-hidden="true">
+      <!-- Technical Skills + Key Achievements (achievements nested under skills) -->
+      <section class="card animate" id="technical-skills" aria-labelledby="skills-title">
+        <h2 id="skills-title" class="section-title">
+          <span class="icon bounce" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M6 2h12v4H6zM4 8h16v2H4zM2 12h20v6H2z" fill="#247BA0"/></svg>
           </span>
-          TECHNICAL SKILLS
+          Technical Skills & Key Achievements
         </h2>
 
-        <div style="margin-top:10px;color:var(--primary);line-height:1.6">
-          <ul>
-            <li>Manual & Functional Testing: Test Planning & Strategy, Test Case Design, Functional, Integration, System, Regression, Smoke, Sanity, UI, Cross-Browser, UAT</li>
-            <li>API Testing: Postman, Swagger, REST API, JSON/XML Validation</li>
-            <li>Test Automation (Basic): Selenium WebDriver (Java), Playwright, TestNG, Maven, Page Object Model (POM)</li>
-            <li>Tools & Platforms: JIRA, Zephyr, TFS, Azure DevOps (ADO), Git, WinSCP, CI/CD Awareness, Figma</li>
-            <li>Methodologies: Agile Scrum, Waterfall, STLC, SDLC</li>
-            <li>Soft Skills: Analytical Thinking, Problem-Solving, Effective Communication, Cross-functional Collaboration</li>
-          </ul>
+        <div class="grid-2">
+          <div>
+            <h3 style="margin:0;color:var(--secondary)">Testing & Automation</h3>
+            <div class="skills-list">
+              <div><strong>Manual & Functional Testing:</strong> Test Planning & Strategy, Test Case Design, Functional, Integration, System, Regression, Smoke, Sanity, UI, Cross-Browser, UAT</div>
+              <div><strong>API Testing:</strong> Postman, Swagger, REST API, JSON/XML Validation</div>
+              <div><strong>Test Automation (Basic):</strong> Selenium WebDriver (Java), Playwright, TestNG, Maven, Page Object Model (POM)</div>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="margin:0;color:var(--secondary)">Tools, Methodologies & Soft Skills</h3>
+            <div class="skills-list">
+              <div><strong>Tools & Platforms:</strong> JIRA, Zephyr, TFS, Azure DevOps (ADO), Git, WinSCP, CI/CD Awareness, Figma</div>
+              <div><strong>Methodologies:</strong> Agile Scrum, Waterfall, STLC, SDLC</div>
+              <div><strong>Soft Skills:</strong> Analytical Thinking, Problem-Solving, Effective Communication, Cross-functional Collaboration</div>
+            </div>
+          </div>
         </div>
 
-        <!-- KEY ACHIEVEMENTS (moved directly under Technical Skills, exact text) -->
         <div style="margin-top:14px">
-          <h3 style="margin:0;color:var(--secondary)">KEY ACHIEVEMENTS</h3>
-          <div style="color:var(--muted);margin-top:8px;line-height:1.6">
-            <ul>
-              <li>Improved Release Stability: Reduced production bug leakage by 25% through enhanced regression test suites and rigorous smoke testing protocols</li>
-              <li>Enhanced Test Efficiency: Authored and executed 300+ manual test cases, achieving 98% test coverage of business requirements</li>
-              <li>Accelerated Defect Resolution: Streamlined defect lifecycle in JIRA, leading to 95% on-time resolution for critical and major bugs</li>
-              <li>Pioneered Automation Efforts: Developed initial set of 20+ Selenium-Java scripts for regression scenarios, laying the foundation for the team's future automation suite</li>
-            </ul>
-          </div>
+          <h3 style="margin:0;color:var(--secondary)">Key Achievements</h3>
+          <ul style="color:var(--muted);margin-top:8px;line-height:1.6">
+            <li><strong>Improved Release Stability:</strong> Reduced production bug leakage by 25% through enhanced regression test suites and rigorous smoke testing protocols.</li>
+            <li><strong>Enhanced Test Efficiency:</strong> Authored and executed 300+ manual test cases, achieving 98% test coverage of business requirements.</li>
+            <li><strong>Accelerated Defect Resolution:</strong> Streamlined defect lifecycle in JIRA, leading to 95% on-time resolution for critical and major bugs.</li>
+            <li><strong>Pioneered Automation Efforts:</strong> Developed initial set of 20+ Selenium-Java scripts for regression scenarios, laying the foundation for the team's future automation suite.</li>
+          </ul>
         </div>
       </section>
 
-      <!-- PROFESSIONAL EXPERIENCE (exact text and order) -->
-      <section class="card animate" id="experience" aria-labelledby="exp-title">
-        <h2 id="exp-title" class="section-title">
+      <!-- Professional Experience -->
+      <section class="card animate" id="experience" aria-labelledby="experience-title">
+        <h2 id="experience-title" class="section-title">
           <span class="icon rotate" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M20 6H4v12h16V6zm0-4a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2h16z" fill="#247BA0"/></svg>
           </span>
-          PROFESSIONAL EXPERIENCE
+          Professional Experience
         </h2>
 
-        <div style="margin-top:10px;color:var(--primary)">
-          <h3 style="margin:0;color:var(--secondary)">Publicis Sapient – Quality Engineer (May 2022 – Present)</h3>
-          <ul style="margin-top:8px;line-height:1.6;color:var(--primary)">
-            <li>Designed and executed test plans and 500+ test cases for web applications, ensuring comprehensive requirement coverage</li>
-            <li>Performed end-to-end manual testing, including Functional, Integration, Regression, Smoke, Sanity, UI, and Cross-Browser testing</li>
-            <li>Conducted API testing using Postman, validating request/response payloads, status codes, and data integrity</li>
-            <li>Managed defect lifecycle in JIRA, logging, tracking, and prioritizing bugs for timely resolution</li>
-            <li>Developed Selenium-Java scripts for high-priority regression cases to initiate automation</li>
-            <li>Actively participated in Agile Scrum ceremonies including sprint planning, daily stand-ups, and retrospectives</li>
+        <div style="margin-top:10px">
+          <h3 style="margin:0;color:var(--secondary)">Publicis Sapient — Quality Engineer (May 2022 – Present)</h3>
+          <div style="color:var(--muted);margin-bottom:8px">May 2022 – Present</div>
+          <ul style="color:var(--primary)">
+            <li>Designed and executed test plans and 500+ test cases for web applications ensuring comprehensive coverage.</li>
+            <li>Performed end-to-end testing: Functional, Integration, Regression, Smoke, Sanity, UI, Cross-Browser.</li>
+            <li>Conducted API testing using Postman; validated payloads, statuses and data integrity.</li>
+            <li>Managed defect lifecycle in JIRA; developed Selenium-Java scripts for high-priority regression cases.</li>
+            <li>Participated in Agile ceremonies: sprint planning, stand-ups, retrospectives.</li>
           </ul>
         </div>
 
-        <div style="margin-top:12px;color:var(--primary)">
-          <h3 style="margin:0;color:var(--secondary)">Boven Technologies – Associate Consultant (Nov 2017 – May 2022)</h3>
-          <ul style="margin-top:8px;line-height:1.6;color:var(--primary)">
-            <li>Executed manual testing cycles for multiple web application projects, contributing to stable and timely releases</li>
-            <li>Authored detailed test scenarios and cases based on functional requirements</li>
-            <li>Collaborated with developers and business analysts during requirement analysis and design phases</li>
-            <li>Performed regression testing across multiple builds and environments, identifying critical issues</li>
+        <div style="margin-top:12px">
+          <h3 style="margin:0;color:var(--secondary)">Boven Technologies — Associate Consultant (Nov 2017 – May 2022)</h3>
+          <div style="color:var(--muted);margin-bottom:8px">Nov 2017 – May 2022</div>
+          <ul style="color:var(--primary)">
+            <li>Executed manual testing cycles across multiple web projects, enabling stable releases.</li>
+            <li>Authored test scenarios and collaborated with development and business teams.</li>
+            <li>Performed regression testing across builds and environments to identify critical issues.</li>
           </ul>
         </div>
       </section>
 
-      <!-- Projects (two only) -->
+      <!-- Projects -->
       <section id="projects" class="card animate" aria-labelledby="projects-title">
         <h2 id="projects-title" class="section-title">
           <span class="icon pulse" aria-hidden="true">
@@ -321,7 +348,7 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
         </div>
       </section>
 
-      <!-- Test Cases accordion (full content included) -->
+      <!-- Test Cases -->
       <section class="card animate" id="testcases" aria-labelledby="testcases-title">
         <h2 id="testcases-title" class="section-title">
           <span class="icon rotate" aria-hidden="true">
@@ -337,55 +364,37 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
           </button>
 
           <div id="accordion-main-content" class="accordion-content" role="region" aria-labelledby="accordion-main-button">
-
-            <!-- Input Validation -->
+            <!-- Edge / Input Validation -->
             <div class="tc">
               <h4>Input Validation — Robust Sanitization & Length Handling (EC-IV)</h4>
-              <div class="meta-row"><div>Priority: Medium</div><div>Focus: XSS, SQLi, Length Limits</div></div>
-
+              <div class="meta-row"><div>Priority: Medium / High</div><div>Focus: XSS, SQLi, Length Limits</div></div>
               <ol>
                 <li><strong>EC-IV-001 — Special Character Handling</strong>
                   <ol>
-                    <li>Description: Verify system handles special characters in text fields</li>
                     <li>Preconditions: Forms and APIs accepting user text fields are available.</li>
                     <li>Steps:
                       <ol>
-                        <li>For each input field (name, address, search, etc.):</li>
-                        <li>Enter value: <code>John&lt;script&gt;alert('xss')&lt;/script&gt;Doe</code></li>
-                        <li>Enter value: <code>test'; DROP TABLE users;--</code></li>
-                        <li>Enter value: <code>normal input</code></li>
-                        <li>Submit/Search</li>
+                        <li>Submit input: <code>John&lt;script&gt;alert('xss')&lt;/script&gt;Doe</code> in name/comment fields.</li>
+                        <li>Submit input: <code>test'; DROP TABLE users;--</code> via form and direct API payload.</li>
+                        <li>Submit a normal input string and compare behaviour.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>Special characters are sanitized or rejected</li>
-                        <li>No system errors or crashes</li>
-                        <li>No SQL injection or XSS vulnerabilities</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Inputs are sanitized or rejected; no script execution in UI; server rejects/validates and encodes on output; logs show validation errors (not stack traces).</li>
+                    <li>Verification: Inspect DOM for injected scripts, review network payloads, and confirm DB stored values are encoded or rejected.</li>
                   </ol>
                 </li>
 
                 <li style="margin-top:8px"><strong>EC-IV-002 — Extremely Long Inputs</strong>
                   <ol>
-                    <li>Description: Verify system handles very long input strings</li>
                     <li>Preconditions: UI and API have defined max length policies.</li>
                     <li>Steps:
                       <ol>
-                        <li>In name field, enter 500 characters</li>
-                        <li>In description field, enter 10,000 characters</li>
-                        <li>In search field, enter 1000 characters</li>
-                        <li>Submit forms</li>
+                        <li>Enter 500 characters in name field; 10,000 in description; 1000 in search; submit forms and API calls.</li>
+                        <li>Measure response latency and observe behavior with very long Unicode/multibyte strings.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>Appropriate truncation or scrolling</li>
-                        <li>No performance degradation</li>
-                        <li>Clear error if exceeding limits</li>
-                      </ul>
-                    </li>
+                    <li>Expected: UI truncates or prompts error; API validates payload length and returns 4xx with clear message; no backend slowdowns or crashes; DB stores allowed lengths only.</li>
+                    <li>Verification: Monitor performance metrics and DB column lengths; check for truncation and user-friendly error messages.</li>
                   </ol>
                 </li>
               </ol>
@@ -397,48 +406,32 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
               <div class="meta-row"><div>Priority: High</div><div>Focus: Workflow correctness & audit trail</div></div>
 
               <ol>
-                <li><strong>ST-OW-001 — Invalid Order Status Changes</strong>
+                <li><strong>ST-OW-001 — Prevent Invalid Status Changes</strong>
                   <ol>
-                    <li>Description: Verify system prevents invalid order status transitions</li>
                     <li>Preconditions: Order management UI/API with status enum (PENDING, CONFIRMED, SHIPPED, DELIVERED).</li>
                     <li>Steps:
                       <ol>
-                        <li>As admin, navigate to order management</li>
-                        <li>Find order with status: PENDING</li>
-                        <li>Attempt to change status directly to: SHIPPED</li>
-                        <li>Attempt to change status directly to: DELIVERED</li>
-                        <li>Follow valid flow: PENDING → CONFIRMED → SHIPPED → DELIVERED</li>
+                        <li>Locate order in PENDING state.</li>
+                        <li>Attempt to change directly to SHIPPED or DELIVERED via UI and direct API.</li>
+                        <li>Perform valid flow PENDING → CONFIRMED → SHIPPED → DELIVERED.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>Invalid transitions show error: "Cannot ship order that is not confirmed"</li>
-                        <li>Valid transitions work successfully</li>
-                        <li>Audit trail maintained for all status changes</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Invalid transitions blocked with clear error (e.g., "Cannot ship order that is not confirmed"); valid transitions succeed and generate audit entries (who/when/from→to).</li>
                   </ol>
                 </li>
 
-                <li style="margin-top:8px"><strong>ST-OW-002 — Cancel Order in Various States</strong>
+                <li style="margin-top:8px"><strong>ST-OW-002 — Cancellation Behavior Across States</strong>
                   <ol>
-                    <li>Description: Verify cancellation works correctly in different order states</li>
                     <li>Preconditions: Cancellation operation exists and inventory service connected.</li>
                     <li>Steps:
                       <ol>
-                        <li>Cancel order in PENDING state</li>
-                        <li>Cancel order in CONFIRMED state</li>
-                        <li>Cancel order in SHIPPED state</li>
-                        <li>Cancel order in DELIVERED state</li>
+                        <li>Cancel order in PENDING — expect success and inventory release.</li>
+                        <li>Cancel in CONFIRMED — expect success, refund flow initiated and inventory release.</li>
+                        <li>Attempt cancel in SHIPPED — expect rejection with message "Cannot cancel shipped order".</li>
+                        <li>Attempt cancel in DELIVERED — expect rejection with message "Cannot cancel delivered order".</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>PENDING/CONFIRMED: Cancel successful, inventory updated</li>
-                        <li>SHIPPED: Error "Cannot cancel shipped order"</li>
-                        <li>DELIVERED: Error "Cannot cancel delivered order"</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Correct outcomes, inventory updates, refund or hold behavior, and clear user messages. Audit logs updated.</li>
                   </ol>
                 </li>
               </ol>
@@ -452,28 +445,17 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
               <ol>
                 <li><strong>ST-UA-001 — Account Status Flow</strong>
                   <ol>
-                    <li>Description: Verify user account state transitions work correctly</li>
                     <li>Preconditions: Signup, verification, suspend/delete endpoints exist.</li>
                     <li>Steps:
                       <ol>
-                        <li>Register new account (status: UNVERIFIED)</li>
-                        <li>Attempt to login with UNVERIFIED account</li>
-                        <li>Verify email (status: ACTIVE)</li>
-                        <li>Login with ACTIVE account</li>
-                        <li>Suspend account (status: SUSPENDED)</li>
-                        <li>Login with SUSPENDED account</li>
-                        <li>Delete account (status: DELETED)</li>
-                        <li>Login with DELETED account</li>
+                        <li>Register new account → UNVERIFIED.</li>
+                        <li>Attempt login as UNVERIFIED (should fail with "Verify your email").</li>
+                        <li>Verify email → ACTIVE, login should succeed.</li>
+                        <li>Suspend account → SUSPENDED; login should fail with "Account suspended".</li>
+                        <li>Delete account → DELETED; login attempts should return "Account not found".</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>UNVERIFIED: Login fails with "Verify your email"</li>
-                        <li>ACTIVE: Login successful</li>
-                        <li>SUSPENDED: Login fails with "Account suspended"</li>
-                        <li>DELETED: Login fails with "Account not found"</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Only valid states allow actions; tokens invalidated on suspension/deletion; audit trail records IP & timestamps.</li>
                   </ol>
                 </li>
               </ol>
@@ -487,45 +469,31 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
               <ol>
                 <li><strong>DI-FU-001 — File Type Spoofing</strong>
                   <ol>
-                    <li>Description: Verify system detects actual file type, not just extension</li>
                     <li>Preconditions: Upload endpoint with type/size rules and file signature check.</li>
                     <li>Steps:
                       <ol>
-                        <li>Rename .txt file to .jpg and upload</li>
-                        <li>Rename .exe file to .pdf and upload</li>
-                        <li>Upload file with correct extension and type</li>
-                        <li>Upload file with double extension: file.jpg.exe</li>
+                        <li>Rename a .txt to .jpg and upload.</li>
+                        <li>Rename .exe to .pdf and upload.</li>
+                        <li>Upload valid .jpg/.pdf file.</li>
+                        <li>Upload file with double extension like file.jpg.exe.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>Files 1,2,4: Rejected with "Invalid file type"</li>
-                        <li>File 3: Uploaded successfully</li>
-                        <li>System checks file signature, not just extension</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Spoofed and double-extension files rejected with "Invalid file type"; valid files accepted; server checks magic bytes/signature, not extension alone.</li>
                   </ol>
                 </li>
 
                 <li style="margin-top:8px"><strong>DI-FU-002 — Corrupted File Handling</strong>
                   <ol>
-                    <li>Description: Verify system handles corrupted files gracefully</li>
                     <li>Preconditions: Upload service and scanning pipeline in place.</li>
                     <li>Steps:
                       <ol>
-                        <li>Upload JPEG with corrupted header</li>
-                        <li>Upload PDF with missing end marker</li>
-                        <li>Upload empty file (0 bytes)</li>
-                        <li>Upload very large file (exceeds limit)</li>
+                        <li>Upload JPEG with corrupted header.</li>
+                        <li>Upload PDF missing EOF marker.</li>
+                        <li>Upload empty (0 bytes) file.</li>
+                        <li>Upload very large file exceeding size limit.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>Clear error messages for each failure case</li>
-                        <li>No server crashes or timeouts</li>
-                        <li>Appropriate file size validation</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Clear, specific error messages; no server crashes; files rejected or quarantined; logs retained for investigation; size limits enforced.</li>
                   </ol>
                 </li>
               </ol>
@@ -539,45 +507,29 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
               <ol>
                 <li><strong>SEC-AUTH-001 — Horizontal Privilege Escalation</strong>
                   <ol>
-                    <li>Description: Verify users cannot access other users' data</li>
                     <li>Preconditions: Multiple user accounts and order/profile endpoints exist.</li>
                     <li>Steps:
                       <ol>
-                        <li>Login as User A (ID: 123)</li>
-                        <li>Note URL: /orders/123</li>
-                        <li>Change URL to: /orders/124</li>
-                        <li>Attempt to view User B's orders</li>
-                        <li>Repeat for other resources: /profile/124, /documents/124</li>
+                        <li>Login as User A (ID 123). Note URL /orders/123.</li>
+                        <li>Change URL to /orders/124 and attempt to view.</li>
+                        <li>Repeat for /profile/124 and /documents/124.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>Access denied error (403 Forbidden)</li>
-                        <li>No data from other users visible</li>
-                        <li>Proper server-side validation</li>
-                      </ul>
-                    </li>
+                    <li>Expected: 403 Forbidden for other users' resources; no data leaked; server-side checks validate owner; logs capture denied attempts.</li>
                   </ol>
                 </li>
 
-                <li style="margin-top:8px"><strong>SEC-AUTH-002 — Direct API Access</strong>
+                <li style="margin-top:8px"><strong>SEC-AUTH-002 — API Authentication & Token Validation</strong>
                   <ol>
-                    <li>Description: Verify APIs enforce authentication/authorization</li>
                     <li>Preconditions: Protected APIs and token handling implemented.</li>
                     <li>Steps:
                       <ol>
-                        <li>Without login, call API: GET /api/users/123/orders</li>
-                        <li>Login as regular user, call admin API: GET /api/admin/users</li>
-                        <li>Use expired token to access protected APIs</li>
+                        <li>Call protected API without login (expect 401).</li>
+                        <li>Login as normal user and call admin API (expect 403).</li>
+                        <li>Use expired token to call protected endpoints (expect 401).</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>All unauthorized requests return 401/403</li>
-                        <li>No sensitive data exposed in error messages</li>
-                        <li>Proper token validation</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Proper 401/403 responses, minimal sensitive info in errors, token expiry and revocation enforced server-side.</li>
                   </ol>
                 </li>
               </ol>
@@ -589,51 +541,31 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
               <div class="meta-row"><div>Priority: High</div><div>Focus: Retry, fallback & recovery</div></div>
 
               <ol>
-                <li><strong>INT-FS-001 — Payment Gateway Timeout</strong>
+                <li><strong>INT-FS-001 — Payment Gateway Timeout & Retry</strong>
                   <ol>
-                    <li>Description: Verify system handles payment gateway failures gracefully</li>
                     <li>Preconditions: Checkout flow and payment gateway integration configured with retry/fallback logic.</li>
                     <li>Steps:
                       <ol>
-                        <li>Initiate checkout process</li>
-                        <li>Simulate payment gateway timeout (disable network/stub)</li>
-                        <li>Check order status in database</li>
-                        <li>Retry payment after timeout</li>
+                        <li>Initiate checkout and simulate payment gateway timeout.</li>
+                        <li>Check order status in DB and user-facing message.</li>
+                        <li>Retry payment and confirm no duplicate charges.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>Order status: PAYMENT_PENDING (not stuck in PROCESSING)</li>
-                        <li>User sees "Payment processing, please try again"</li>
-                        <li>No duplicate charges on retry</li>
-                        <li>Inventory not permanently deducted</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Order set to PAYMENT_PENDING (not stuck in PROCESSING); user sees clear retry message; idempotent retry prevents duplicate charges; inventory not permanently reserved incorrectly.</li>
                   </ol>
                 </li>
 
-                <li style="margin-top:8px"><strong>INT-FS-002 — External Service Unavailable</strong>
+                <li style="margin-top:8px"><strong>INT-FS-002 — External Service Degradation</strong>
                   <ol>
-                    <li>Description: Verify system degrades gracefully when external APIs are down</li>
-                    <li>Preconditions: Multiple external services integrated.</li>
+                    <li>Preconditions: Multiple external services (email, SMS, address validation) integrated.</li>
                     <li>Steps:
                       <ol>
-                        <li>Disable email service</li>
-                        <li>User registers new account</li>
-                        <li>Disable SMS service</li>
-                        <li>User requests password reset</li>
-                        <li>Disable address validation service</li>
-                        <li>User enters shipping address</li>
+                        <li>Disable email service and register user; observe behavior.</li>
+                        <li>Disable SMS and request password reset; observe fallback strategies.</li>
+                        <li>Disable address validation and submit address.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>System continues functioning with degraded features</li>
-                        <li>Clear messages: "Email service temporarily unavailable"</li>
-                        <li>Queues requests for when services recover</li>
-                        <li>No data loss</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Application continues with degraded features, queues messages for retry, shows clear explanatory messages, and no data loss.</li>
                   </ol>
                 </li>
               </ol>
@@ -647,46 +579,28 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
               <ol>
                 <li><strong>UX-UE-001 — Error Message Clarity</strong>
                   <ol>
-                    <li>Description: Verify error messages are helpful and actionable</li>
                     <li>Preconditions: Validation rules and UI highlighting configured.</li>
                     <li>Steps:
                       <ol>
-                        <li>Submit form with multiple validation errors</li>
-                        <li>Enter wrong password on login</li>
-                        <li>Search with no results</li>
-                        <li>Access restricted page without permission</li>
+                        <li>Submit form with multiple validation errors.</li>
+                        <li>Enter wrong password on login.</li>
+                        <li>Search with no results and access restricted page without permission.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>Errors are specific: "Password must contain uppercase letter" not "Invalid input"</li>
-                        <li>Errors suggest solutions: "Forgot password?" link</li>
-                        <li>Error fields are highlighted visually</li>
-                        <li>User knows exactly what to fix</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Errors are actionable and specific; suggestions or links to recovery present; fields highlighted; errors accessible to screen readers.</li>
                   </ol>
                 </li>
 
-                <li style="margin-top:8px"><strong>UX-UE-002 — Form Persistence</strong>
+                <li style="margin-top:8px"><strong>UX-UE-002 — Form Persistence & Auto-Save</strong>
                   <ol>
-                    <li>Description: Verify form data persists across navigation</li>
                     <li>Preconditions: Multi-step or long forms exist.</li>
                     <li>Steps:
                       <ol>
-                        <li>Fill long multi-page form (application, checkout)</li>
-                        <li>Navigate back/forward in browser</li>
-                        <li>Refresh page accidentally</li>
-                        <li>Click browser back button</li>
+                        <li>Fill long multi-page form, navigate away, return, refresh, and use back/forward navigation.</li>
+                        <li>Simulate accidental refresh and confirm saved state.</li>
                       </ol>
                     </li>
-                    <li>Expected Results:
-                      <ul>
-                        <li>Form data preserved across navigation</li>
-                        <li>Clear warning before losing unsaved data</li>
-                        <li>Auto-save functionality for long forms</li>
-                      </ul>
-                    </li>
+                    <li>Expected: Data preserved across navigation; auto-save warning when leaving; undo/restore available where appropriate.</li>
                   </ol>
                 </li>
               </ol>
@@ -696,32 +610,22 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
         </div>
       </section>
 
-      <!-- EDUCATION (moved to the end as requested) -->
-      <section class="card animate" id="education" aria-labelledby="edu-title">
-        <h2 id="edu-title" class="section-title">
+      <!-- Education & Languages -->
+      <section class="card animate" id="edu-lang" aria-labelledby="edu-lang-title">
+        <h2 id="edu-lang-title" class="section-title">
           <span class="icon pulse" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 2l9 4-9 4-9-4 9-4zM3 10l9 4 9-4v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6z" fill="#247BA0"/></svg>
           </span>
-          EDUCATION
+          Education & Languages
         </h2>
-
-        <div style="margin-top:10px;color:var(--primary);line-height:1.6">
-          <p>Bachelor of Technology – Mechanical Engineering<br>
-          Godavari Institute of Engineering & Technology (JNTUK), 2012 – 2016</p>
+        <div style="color:var(--primary);margin-bottom:10px">
+          <strong>Education</strong>
+          <div style="color:var(--muted);margin-top:6px">Bachelor of Technology – Mechanical Engineering<br>Godavari Institute of Engineering & Technology (JNTUK), 2012 – 2016</div>
         </div>
-      </section>
 
-      <!-- LANGUAGES (last section) -->
-      <section class="card animate" id="languages" aria-labelledby="lang-title">
-        <h2 id="lang-title" class="section-title">
-          <span class="icon bounce" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#247BA0"/></svg>
-          </span>
-          LANGUAGES
-        </h2>
-
-        <div style="margin-top:10px;color:var(--primary);line-height:1.6">
-          <p>English (Professional) | Telugu (Native) | Hindi (Conversational)</p>
+        <div style="color:var(--primary);margin-top:8px">
+          <strong>Languages</strong>
+          <div style="color:var(--muted);margin-top:6px">English (Professional) | Telugu (Native) | Hindi (Conversational)</div>
         </div>
       </section>
 
@@ -733,7 +637,7 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
   </div>
 
   <script>
-    // overlay, vcard and animations
+    // show/hide overlay based on load, and allow opening visiting card while overlay active
     const overlay = document.getElementById('overlay');
     const siteWrap = document.getElementById('site-wrap');
     const vcard = document.getElementById('vcard');
@@ -752,48 +656,57 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
       vcard.setAttribute('aria-hidden','true');
     }
 
-    if (avatarTop) avatarTop.addEventListener('click', openVCard);
-    if (overlayAvatar) overlayAvatar.addEventListener('click', openVCard);
-    if (openVcardBtn) openVcardBtn.addEventListener('click', (e)=>{ e.preventDefault(); openVCard(); });
+    avatarTop.addEventListener('click', openVCard);
+    overlayAvatar.addEventListener('click', openVCard);
+    openVcardBtn.addEventListener('click', (e)=>{ e.preventDefault(); openVCard(); });
 
+    // close vcard when clicking outside
     document.addEventListener('click', (e)=>{
-      if(vcard.style.display==='block' && !vcard.contains(e.target) && !avatarTop.contains(e.target) && !overlayAvatar.contains(e.target)){
+      if(!vcard.contains(e.target) && !avatarTop.contains(e.target) && !overlayAvatar.contains(e.target) && vcard.style.display==='block'){
         closeVCard();
       }
     });
 
-    // hide overlay on window load
+    // hide overlay when fully loaded (simulate quickly)
     window.addEventListener('load', () => {
-      setTimeout(()=> {
+      // allow a short delay so visitor sees the welcome card
+      setTimeout(()=>{
         overlay.classList.add('hidden');
+        // reveal site content and animate sections
         siteWrap.setAttribute('aria-hidden','false');
         document.querySelectorAll('.animate').forEach(el => el.classList.add('show'));
-      }, 700);
+      }, 650);
     });
 
-    // set year
+    // setup year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // accordion
+    // accordion toggle
     function toggleAccordionMain(){
       const btn = document.getElementById('accordion-main-button');
       const content = document.getElementById('accordion-main-content');
       const isOpen = content.classList.contains('open');
       if (!isOpen){
-        content.classList.add('open'); btn.setAttribute('aria-expanded','true');
-        setTimeout(()=>content.scrollIntoView({behavior:'smooth', block:'center'}),120);
+        content.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+        setTimeout(()=>content.scrollIntoView({behavior:'smooth',block:'center'}),120);
       } else {
-        content.classList.remove('open'); btn.setAttribute('aria-expanded','false');
+        btn.setAttribute('aria-expanded','false');
       }
     }
+
+    // helper used by project "Open Test Cases" quick-links
     function openTestCases(){ 
       const btn = document.getElementById('accordion-main-button');
       const content = document.getElementById('accordion-main-content');
-      if (!content.classList.contains('open')) toggleAccordionMain();
-      else content.scrollIntoView({behavior:'smooth',block:'center'});
+      if (!content.classList.contains('open')){
+        toggleAccordionMain();
+      } else {
+        content.scrollIntoView({behavior:'smooth',block:'center'});
+      }
     }
 
-    // keyboard accessibility
+    // keyboard accessibility for overlay actions
     document.querySelectorAll('a, button, .avatar').forEach(el=>{
       el.classList.add('focusable');
       el.addEventListener('keydown', (e)=>{
@@ -801,9 +714,14 @@ Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual 
       });
     });
 
-    // Escape closes overlay & vcard
+    // make overlay closable by Escape key once site has loaded
     document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape'){ overlay.classList.add('hidden'); siteWrap.setAttribute('aria-hidden','false'); document.querySelectorAll('.animate').forEach(el => el.classList.add('show')); closeVCard(); }
+      if(e.key === 'Escape'){
+        overlay.classList.add('hidden');
+        siteWrap.setAttribute('aria-hidden','false');
+        document.querySelectorAll('.animate').forEach(el => el.classList.add('show'));
+        closeVCard();
+      }
     });
   </script>
 </body>
