@@ -20,18 +20,19 @@
     body{
       margin:0;
       font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: linear-gradient(180deg, #eef3f6 0%, var(--accent) 100%);
+      background: linear-gradient(180deg, #f7f8f9 0%, var(--accent) 100%);
       color:var(--primary);
       padding:36px 20px;
       -webkit-font-smoothing:antialiased;
     }
     .wrap{max-width:var(--container);margin:0 auto}
 
+    /* Header / Hero */
     header.hero{
       display:flex;gap:20px;align-items:center;padding:26px;border-radius:var(--radius);
-      background: linear-gradient(180deg, rgba(36,123,160,0.06), rgba(80,81,79,0.02));
+      background: linear-gradient(180deg, rgba(36,123,160,0.04), rgba(80,81,79,0.02));
       border:1px solid rgba(80,81,79,0.06);
-      box-shadow: 0 8px 30px rgba(80,81,79,0.06);
+      box-shadow: 0 8px 30px rgba(16,24,32,0.04);
       position:relative; overflow:hidden;
     }
     .avatar{
@@ -74,27 +75,23 @@
     .project-card p{margin:8px 0;color:var(--muted)}
     .project-actions{margin-top:8px;display:flex;gap:10px;flex-wrap:wrap}
 
-    /* Accordion styles */
+    /* TEST CASES Accordion (single accordion opens to reveal all cleaned test cases) */
     .accordion{margin-top:12px;border-radius:10px;overflow:hidden;border:1px solid rgba(36,123,160,0.08)}
-    .accordion-item{border-bottom:1px solid rgba(80,81,79,0.04);background:var(--accent)}
     .accordion-button{
       width:100%;text-align:left;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;
       background:linear-gradient(90deg, rgba(36,123,160,0.02), transparent);border:none;cursor:pointer;font-weight:700;color:var(--primary);
     }
     .accordion-button:focus{outline:3px solid rgba(36,123,160,0.12);outline-offset:3px}
     .accordion-content{max-height:0;overflow:hidden;transition:max-height .36s ease,padding .24s ease;padding:0 16px}
-    .accordion-content.open{padding:16px;max-height:2000px}
+    .accordion-content.open{padding:16px;max-height:4000px}
 
-    table{width:100%;border-collapse:collapse;margin-top:8px}
-    table th, table td{border:1px solid rgba(80,81,79,0.06);padding:10px;text-align:left;font-size:0.95rem}
-    table th{background:var(--secondary);color:var(--accent);font-weight:700}
-
-    /* Test case block */
+    /* Test case presentation */
     .tc{background:#fff;padding:12px;border-radius:8px;border:1px solid rgba(36,123,160,0.06);margin-bottom:10px}
     .tc h4{margin:0 0 8px 0;color:var(--primary)}
     .meta-row{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:0.9rem;margin-bottom:8px}
+    .tc ol{margin:8px 0 0 18px;color:var(--primary)}
 
-    /* Small screens */
+    /* responsive */
     @media (max-width:920px){ .grid-2{grid-template-columns:1fr} .contact{margin-left:0;margin-top:8px;text-align:left} header.hero{flex-direction:column;align-items:flex-start} }
     @media (max-width:520px){
       body{padding:20px}
@@ -124,14 +121,14 @@
 
       <div class="hero-body">
         <h1 id="hero-name" class="name">SEELAM DURGA KIRAN</h1>
-        <div class="subtitle">Email: <a class="link" href="mailto:sdkiran.qualityengineer@gmail.com">sdkiran.qualityengineer@gmail.com</a>  |  Mobile: +91 9000707631  |  Rajahmundry, India</div>
+        <div class="subtitle">Email: <a href="mailto:sdkiran.qualityengineer@gmail.com">sdkiran.qualityengineer@gmail.com</a>  |  Mobile: +91 9000707631  |  Rajahmundry, India</div>
 
         <div class="actions">
           <a class="btn" href="Kiran_ATS_Resume.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download resume">⤓ Download Resume</a>
           <a class="btn alt" href="mailto:sdkiran.qualityengineer@gmail.com" aria-label="Email">✉ Send Email</a>
           <div class="contact" aria-hidden="false">
             <div style="font-weight:700;color:var(--primary)">Quality Assurance Engineer</div>
-            <div class="small">Selenium (Java) • API Testing • Test Automation (POM, TestNG) • JIRA • Zephyr</div>
+            <div class="small" style="color:var(--muted)">Selenium (Java) • API Testing • Test Automation • JIRA • Zephyr</div>
           </div>
         </div>
       </div>
@@ -164,7 +161,7 @@
               <li>Reduced production bug leakage by 25% via improved regression suites and smoke testing.</li>
               <li>Authored and executed 300+ manual test cases; achieved 98% coverage vs business requirements.</li>
               <li>Streamlined defect lifecycle in JIRA, achieving 95% on-time resolution for critical issues.</li>
-              <li>Built initial 20+ Selenium-Java scripts to accelerate regression automation adoption.</li>
+              <li>Built initial Selenium-Java scripts to accelerate regression automation adoption.</li>
             </ul>
           </div>
         </div>
@@ -201,7 +198,7 @@
         <div style="margin-top:8px;color:var(--primary)"><strong>Languages:</strong> English (Professional) | Telugu (Native) | Hindi (Conversational)</div>
       </section>
 
-      <!-- Projects (without inline test cases) -->
+      <!-- Projects (without test cases inline; Mock Project removed) -->
       <section id="projects" class="card animate" aria-labelledby="projects-title">
         <h2 id="projects-title" class="section-title">Projects</h2>
 
@@ -209,9 +206,9 @@
         <div class="project-card" style="margin-bottom:12px">
           <h3>UFH – UPS United Postal Services</h3>
           <p><strong>Role:</strong> QA Engineer | <strong>Technologies:</strong> Selenium (Java), Postman, JIRA, Zephyr</p>
-          <p style="color:var(--muted)">Designed automated and manual test processes for complex shipping and tracking flows, API validation, and end-to-end regression suites that reduced release defects.</p>
+          <p style="color:var(--muted)">Designed automated and manual test processes for complex shipping and tracking flows and API validation; improved regression coverage and release stability.</p>
           <div class="project-actions">
-            <a class="btn alt" href="#testcases-Edge-Cases" onclick="document.getElementById('accordion-Edge-Cases').scrollIntoView({behavior:'smooth'});">View Test Cases</a>
+            <a class="btn alt" href="#testcases-accordion" onclick="openTestCases()">Open Test Cases</a>
             <a class="btn" href="#" onclick="window.open('https://github.com','_blank')">View repo</a>
           </div>
         </div>
@@ -220,211 +217,273 @@
         <div class="project-card" style="margin-bottom:12px">
           <h3>Boven Technologies – AIOps Dashboard</h3>
           <p><strong>Role:</strong> QA Analyst | <strong>Technologies:</strong> Manual Testing, Selenium, API Validation, JIRA</p>
-          <p style="color:var(--muted)">Executed thorough regression and integration testing for monitoring dashboards and alerting pipelines; ensured stable UAT and production rollouts.</p>
+          <p style="color:var(--muted)">Performed regression and integration testing for monitoring dashboards and alerting pipelines; ensured robust UAT and production rollouts.</p>
           <div class="project-actions">
-            <a class="btn alt" href="#testcases-Integration" onclick="document.getElementById('accordion-Integration').scrollIntoView({behavior:'smooth'});">View Test Cases</a>
+            <a class="btn alt" href="#testcases-accordion" onclick="openTestCases()">Open Test Cases</a>
             <a class="btn" href="#" onclick="window.open('https://github.com','_blank')">View repo</a>
           </div>
         </div>
 
-        <!-- Project 3 -->
-        <div class="project-card" style="margin-bottom:4px">
-          <h3>Mock Project – E-Commerce QA</h3>
-          <p><strong>Role:</strong> QA Engineer | <strong>Technologies:</strong> Selenium (Java), Postman, JIRA</p>
-          <p style="color:var(--muted)">Prepared functional and regression checks for checkout, catalog, and order lifecycle flows; supported automation for key customer journeys.</p>
-        </div>
+      </section>
 
-        <!-- TEST CASES ACCORDION -->
-        <div class="card" style="margin-top:18px">
-          <h2 class="section-title">Test Cases</h2>
-          <div class="accordion" id="testcases-accordion">
+      <!-- Test Cases (single accordion to reveal all cleaned & enhanced test cases) -->
+      <section class="card animate" id="testcases" aria-labelledby="testcases-title">
+        <h2 id="testcases-title" class="section-title">Test Cases</h2>
 
-            <!-- 1: Edge Cases -->
-            <div class="accordion-item" id="accordion-Edge-Cases">
-              <button class="accordion-button" aria-expanded="false" aria-controls="content-Edge-Cases" onclick="toggleAccordion('content-Edge-Cases', this)">
-                1 — Edge Cases (boundary-analysis.md & input-validation.md)
-                <span class="chev">▸</span>
-              </button>
-              <div id="content-Edge-Cases" class="accordion-content" role="region" aria-labelledby="accordion-Edge-Cases">
-                <!-- boundary-analysis.md expanded test cases -->
-                <div class="tc">
-                  <h4>EC-BND-01: Login Field Length Boundary</h4>
-                  <div class="meta-row"><div>Priority: High</div><div>Type: Boundary</div><div>Area: Authentication</div></div>
+        <div class="accordion" id="testcases-accordion">
+          <button class="accordion-button" id="accordion-main-button" aria-expanded="false" aria-controls="accordion-main-content" onclick="toggleAccordionMain()">
+            Open: Comprehensive QA Test Suite — Edge Cases, State Transitions, Data Integrity, Security, Integration & UX
+            <span class="chev">▸</span>
+          </button>
+
+          <div id="accordion-main-content" class="accordion-content" role="region" aria-labelledby="accordion-main-button">
+            <!-- Edge / Input Validation -->
+            <div class="tc">
+              <h4>Input Validation — Robust Sanitization & Length Handling (EC-IV)</h4>
+              <div class="meta-row"><div>Priority: Medium / High</div><div>Focus: XSS, SQLi, Length Limits</div></div>
+              <ol>
+                <li><strong>EC-IV-001 — Special Character Handling</strong>
                   <ol>
-                    <li>Preconditions: User signup page available; DB accessible.</li>
-                    <li>Steps: Enter username with 1 char; attempt signup -> observe validation. Repeat with max allowed length (e.g., 255 chars) and with 256 chars.</li>
-                    <li>Expected: 1-char and mid-range input accepted; 255 accepted if within limit; 256 rejected with clear error; no server error or truncation.</li>
-                    <li>Notes: Verify DB stores full string and UI shows full value without overflow.</li>
+                    <li>Preconditions: Forms and APIs accepting user text fields are available.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Submit input: <code>John&lt;script&gt;alert('xss')&lt;/script&gt;Doe</code> in name/comment fields.</li>
+                        <li>Submit input: <code>test'; DROP TABLE users;--</code> via form and direct API payload.</li>
+                        <li>Submit a normal input string and compare behaviour.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Inputs are sanitized or rejected; no script execution in UI; server rejects/validates and encodes on output; logs show validation errors (not stack traces).</li>
+                    <li>Verification: Inspect DOM for injected scripts, review network payloads, and confirm DB stored values are encoded or rejected.</li>
                   </ol>
-                </div>
+                </li>
 
-                <div class="tc">
-                  <h4>EC-BND-02: Numeric Field Upper Bound (Quantity)</h4>
-                  <div class="meta-row"><div>Priority: Medium</div><div>Type: Boundary</div><div>Area: Orders</div></div>
+                <li style="margin-top:8px"><strong>EC-IV-002 — Extremely Long Inputs</strong>
                   <ol>
-                    <li>Preconditions: Order creation UI and API available.</li>
-                    <li>Steps: Submit order with quantity 0, 1, large number (10,000), and max-int+1; observe response.</li>
-                    <li>Expected: 0 rejected if not allowed; normal range accepted; server rejects overflow with 4xx and informative message; no DB corruption.</li>
+                    <li>Preconditions: UI and API have defined max length policies.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Enter 500 characters in name field; 10,000 in description; 1000 in search; submit forms and API calls.</li>
+                        <li>Measure response latency and observe behavior with very long Unicode/multibyte strings.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: UI truncates or prompts error; API validates payload length and returns 4xx with clear message; no backend slowdowns or crashes; DB stores allowed lengths only.</li>
+                    <li>Verification: Monitor performance metrics and DB column lengths; check for truncation and user-friendly error messages.</li>
                   </ol>
-                </div>
-
-                <div class="tc">
-                  <h4>EC-IV-01: Input Validation – Special Characters</h4>
-                  <div class="meta-row"><div>Priority: High</div><div>Type: Validation</div><div>Area: User Input</div></div>
-                  <ol>
-                    <li>Preconditions: Form accepts free-text inputs (name, comments).</li>
-                    <li>Steps: Submit entries with <, >, ', ", SQL meta-characters, very long multibyte strings.</li>
-                    <li>Expected: UI sanitizes or rejects dangerous characters; backend returns validation errors for prohibited inputs; no XSS or SQL injection possible.</li>
-                    <li>Verification: Inspect network payloads and stored values to ensure encoded or rejected characters.</li>
-                  </ol>
-                </div>
-
-              </div>
+                </li>
+              </ol>
             </div>
 
-            <!-- 2: State Transition -->
-            <div class="accordion-item" id="accordion-State-Transition">
-              <button class="accordion-button" aria-expanded="false" aria-controls="content-State-Transition" onclick="toggleAccordion('content-State-Transition', this)">
-                2 — State Transition (order-workflow.md & user-account.md)
-                <span class="chev">▸</span>
-              </button>
-              <div id="content-State-Transition" class="accordion-content">
-                <div class="tc">
-                  <h4>ST-ORD-01: Order Lifecycle – Pending → Confirmed → Shipped → Delivered</h4>
-                  <div class="meta-row"><div>Priority: High</div><div>Type: Workflow</div></div>
-                  <ol>
-                    <li>Preconditions: Order API with state transitions and webhook/notification system active.</li>
-                    <li>Steps: Create order (Pending), trigger payment to move to Confirmed, simulate fulfillment -> move to Shipped, then mark Delivered.</li>
-                    <li>Expected: Each state transition only allowed from previous valid state, timestamps and audit trail captured, notifications fired, and UI reflects state.</li>
-                  </ol>
-                </div>
+            <!-- Order Workflow -->
+            <div class="tc">
+              <h4>Order Workflow — Prevent Invalid Transitions & Cancellation Handling (ST-OW)</h4>
+              <div class="meta-row"><div>Priority: High</div><div>Focus: Workflow correctness & audit trail</div></div>
 
-                <div class="tc">
-                  <h4>ST-ACC-01: User Account Activation & Password Reset Flow</h4>
-                  <div class="meta-row"><div>Priority: Medium</div><div>Type: State & Security</div></div>
+              <ol>
+                <li><strong>ST-OW-001 — Prevent Invalid Status Changes</strong>
                   <ol>
-                    <li>Preconditions: New user signup and password reset endpoints available.</li>
-                    <li>Steps: Register new user -> verify activation email link expired vs valid; request password reset -> use token; attempt reuse of token.</li>
-                    <li>Expected: Activation works only once; expired tokens rejected; reused tokens invalidated; audit logs include IP & timestamp.</li>
+                    <li>Preconditions: Order management UI/API with status enum (PENDING, CONFIRMED, SHIPPED, DELIVERED).</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Locate order in PENDING state.</li>
+                        <li>Attempt to change directly to SHIPPED or DELIVERED via UI and direct API.</li>
+                        <li>Perform valid flow PENDING → CONFIRMED → SHIPPED → DELIVERED.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Invalid transitions blocked with clear error (e.g., "Cannot ship order that is not confirmed"); valid transitions succeed and generate audit entries (who/when/from→to).</li>
                   </ol>
-                </div>
-              </div>
+                </li>
+
+                <li style="margin-top:8px"><strong>ST-OW-002 — Cancellation Behavior Across States</strong>
+                  <ol>
+                    <li>Preconditions: Cancellation operation exists and inventory service connected.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Cancel order in PENDING — expect success and inventory release.</li>
+                        <li>Cancel in CONFIRMED — expect success, refund flow initiated and inventory release.</li>
+                        <li>Attempt cancel in SHIPPED — expect rejection with message "Cannot cancel shipped order".</li>
+                        <li>Attempt cancel in DELIVERED — expect rejection with message "Cannot cancel delivered order".</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Correct outcomes, inventory updates, refund or hold behavior, and clear user messages. Audit logs updated.</li>
+                  </ol>
+                </li>
+              </ol>
             </div>
 
-            <!-- 3: Data Integrity -->
-            <div class="accordion-item" id="accordion-Data-Integrity">
-              <button class="accordion-button" aria-expanded="false" aria-controls="content-Data-Integrity" onclick="toggleAccordion('content-Data-Integrity', this)">
-                3 — Data Integrity (file-upload.md & data-corruption.md)
-                <span class="chev">▸</span>
-              </button>
-              <div id="content-Data-Integrity" class="accordion-content">
-                <div class="tc">
-                  <h4>DI-FU-01: File Upload – Size & Type Validation</h4>
-                  <div class="meta-row"><div>Priority: High</div><div>Type: Functional</div></div>
-                  <ol>
-                    <li>Preconditions: Upload endpoint with file-type whitelist and size limit (e.g., 10MB).</li>
-                    <li>Steps: Upload allowed type within limit; upload disallowed type; upload file slightly over limit; upload corrupted file stream.</li>
-                    <li>Expected: Allowed files succeed; disallowed types rejected with proper code; oversized rejects with message; corrupted stream handled gracefully without server crash.</li>
-                  </ol>
-                </div>
+            <!-- User Account State -->
+            <div class="tc">
+              <h4>User Account Lifecycle — Activation, Suspension & Deletion (ST-UA)</h4>
+              <div class="meta-row"><div>Priority: High</div><div>Focus: Auth & state enforcement</div></div>
 
-                <div class="tc">
-                  <h4>DI-DC-01: Data Corruption – Simulate Partial Writes</h4>
-                  <div class="meta-row"><div>Priority: Medium</div><div>Type: Resilience</div></div>
+              <ol>
+                <li><strong>ST-UA-001 — Account Status Flow</strong>
                   <ol>
-                    <li>Preconditions: Backend storage and atomic write operations available.</li>
-                    <li>Steps: Simulate network interruption during record write; read record after interruption.</li>
-                    <li>Expected: System either rolls back or marks record as inconsistent for remediation; no silent partial writes that break referential integrity.</li>
+                    <li>Preconditions: Signup, verification, suspend/delete endpoints exist.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Register new account → UNVERIFIED.</li>
+                        <li>Attempt login as UNVERIFIED (should fail with "Verify your email").</li>
+                        <li>Verify email → ACTIVE, login should succeed.</li>
+                        <li>Suspend account → SUSPENDED; login should fail with "Account suspended".</li>
+                        <li>Delete account → DELETED; login attempts should return "Account not found".</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Only valid states allow actions; tokens invalidated on suspension/deletion; audit trail records IP & timestamps.</li>
                   </ol>
-                </div>
-              </div>
+                </li>
+              </ol>
             </div>
 
-            <!-- 4: Security -->
-            <div class="accordion-item" id="accordion-Security">
-              <button class="accordion-button" aria-expanded="false" aria-controls="content-Security" onclick="toggleAccordion('content-Security', this)">
-                4 — Security (authorization.md & input-sanitization.md)
-                <span class="chev">▸</span>
-              </button>
-              <div id="content-Security" class="accordion-content">
-                <div class="tc">
-                  <h4>SEC-AUTH-01: Authorization – Role-Based Access Control</h4>
-                  <div class="meta-row"><div>Priority: High</div><div>Type: Security</div></div>
-                  <ol>
-                    <li>Preconditions: Users with roles (admin, manager, user) exist.</li>
-                    <li>Steps: Attempt admin-only action as regular user via UI and direct API call; attempt manager-level action as user.</li>
-                    <li>Expected: Unauthorized attempts receive 403; no privilege escalation; logs record attempts.</li>
-                  </ol>
-                </div>
+            <!-- File Upload / Data Integrity -->
+            <div class="tc">
+              <h4>File Upload & Data Integrity — Type Detection & Corruption Handling (DI-FU)</h4>
+              <div class="meta-row"><div>Priority: High</div><div>Focus: Security & resilience</div></div>
 
-                <div class="tc">
-                  <h4>SEC-INS-01: Input Sanitization – Prevent XSS & Injection</h4>
-                  <div class="meta-row"><div>Priority: High</div><div>Type: Security</div></div>
+              <ol>
+                <li><strong>DI-FU-001 — File Type Spoofing</strong>
                   <ol>
-                    <li>Preconditions: Inputs stored and rendered in UI (comments, product names).</li>
-                    <li>Steps: Submit payloads containing script tags, event handlers, JSON with injection patterns.</li>
-                    <li>Expected: UI escapes content or rejects unsafe input; no script execution; server uses parameterized queries.</li>
+                    <li>Preconditions: Upload endpoint with type/size rules and file signature check.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Rename a .txt to .jpg and upload.</li>
+                        <li>Rename .exe to .pdf and upload.</li>
+                        <li>Upload valid .jpg/.pdf file.</li>
+                        <li>Upload file with double extension like file.jpg.exe.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Spoofed and double-extension files rejected with "Invalid file type"; valid files accepted; server checks magic bytes/signature, not extension alone.</li>
                   </ol>
-                </div>
-              </div>
+                </li>
+
+                <li style="margin-top:8px"><strong>DI-FU-002 — Corrupted File Handling</strong>
+                  <ol>
+                    <li>Preconditions: Upload service and scanning pipeline in place.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Upload JPEG with corrupted header.</li>
+                        <li>Upload PDF missing EOF marker.</li>
+                        <li>Upload empty (0 bytes) file.</li>
+                        <li>Upload very large file exceeding size limit.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Clear, specific error messages; no server crashes; files rejected or quarantined; logs retained for investigation; size limits enforced.</li>
+                  </ol>
+                </li>
+              </ol>
             </div>
 
-            <!-- 5: Integration -->
-            <div class="accordion-item" id="accordion-Integration">
-              <button class="accordion-button" aria-expanded="false" aria-controls="content-Integration" onclick="toggleAccordion('content-Integration', this)">
-                5 — Integration (failure-scenarios.md)
-                <span class="chev">▸</span>
-              </button>
-              <div id="content-Integration" class="accordion-content">
-                <div class="tc">
-                  <h4>INT-FS-01: Downstream Service Failure – Retry & Circuit Breaker</h4>
-                  <div class="meta-row"><div>Priority: High</div><div>Type: Integration</div></div>
-                  <ol>
-                    <li>Preconditions: App depends on external pricing API with retry logic and circuit breaker.</li>
-                    <li>Steps: Simulate 500/504 from service; verify retry behavior, circuit open after threshold, fallback values used if configured.</li>
-                    <li>Expected: Retries attempted up to limit, circuit opens and prevents cascading retries, user sees meaningful message or fallback content.</li>
-                  </ol>
-                </div>
+            <!-- Authorization & Access Control -->
+            <div class="tc">
+              <h4>Authorization & Access Control — Prevent Data Leaks & API Abuse (SEC-AUTH)</h4>
+              <div class="meta-row"><div>Priority: Critical</div><div>Focus: Horizontal & API security</div></div>
 
-                <div class="tc">
-                  <h4>INT-FS-02: Message Queue Processing Failure</h4>
-                  <div class="meta-row"><div>Priority: Medium</div><div>Type: Integration/Recovery</div></div>
+              <ol>
+                <li><strong>SEC-AUTH-001 — Horizontal Privilege Escalation</strong>
                   <ol>
-                    <li>Preconditions: System consumes messages from queue and performs idempotent operations.</li>
-                    <li>Steps: Force handler to throw on first attempt; ensure message moves to DLQ after N retries; reprocess DLQ message.</li>
-                    <li>Expected: Failed message does not block queue; DLQ contains diagnostics; reprocessing succeeds or is remedied with repeatable outcome.</li>
+                    <li>Preconditions: Multiple user accounts and order/profile endpoints exist.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Login as User A (ID 123). Note URL /orders/123.</li>
+                        <li>Change URL to /orders/124 and attempt to view.</li>
+                        <li>Repeat for /profile/124 and /documents/124.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: 403 Forbidden for other users' resources; no data leaked; server-side checks validate owner; logs capture denied attempts.</li>
                   </ol>
-                </div>
-              </div>
+                </li>
+
+                <li style="margin-top:8px"><strong>SEC-AUTH-002 — API Authentication & Token Validation</strong>
+                  <ol>
+                    <li>Preconditions: Protected APIs and token handling implemented.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Call protected API without login (expect 401).</li>
+                        <li>Login as normal user and call admin API (expect 403).</li>
+                        <li>Use expired token to call protected endpoints (expect 401).</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Proper 401/403 responses, minimal sensitive info in errors, token expiry and revocation enforced server-side.</li>
+                  </ol>
+                </li>
+              </ol>
             </div>
 
-            <!-- 6: Usability -->
-            <div class="accordion-item" id="accordion-Usability">
-              <button class="accordion-button" aria-expanded="false" aria-controls="content-Usability" onclick="toggleAccordion('content-Usability', this)">
-                6 — Usability (user-experience.md)
-                <span class="chev">▸</span>
-              </button>
-              <div id="content-Usability" class="accordion-content">
-                <div class="tc">
-                  <h4>US-UX-01: Onboarding Flow Completeness</h4>
-                  <div class="meta-row"><div>Priority: Medium</div><div>Type: Usability</div></div>
-                  <ol>
-                    <li>Preconditions: New user onboarding flow with tooltips and progress steps.</li>
-                    <li>Steps: Complete onboarding as new user; skip steps; return later; test on mobile/desktop.</li>
-                    <li>Expected: Onboarding resumes correctly; skip doesn't lead to data inconsistency; tooltips readable and accessible.</li>
-                  </ol>
-                </div>
+            <!-- Integration Failure Scenarios -->
+            <div class="tc">
+              <h4>Integration Resilience — Payment & External Service Failures (INT-FS)</h4>
+              <div class="meta-row"><div>Priority: High</div><div>Focus: Retry, fallback & recovery</div></div>
 
-                <div class="tc">
-                  <h4>US-UX-02: Performance Perception – First Contentful Paint</h4>
-                  <div class="meta-row"><div>Priority: Low</div><div>Type: Performance/UX</div></div>
+              <ol>
+                <li><strong>INT-FS-001 — Payment Gateway Timeout & Retry</strong>
                   <ol>
-                    <li>Preconditions: Main page publicly accessible.</li>
-                    <li>Steps: Load page on various device/network speeds; measure FCP and LCP.</li>
-                    <li>Expected: FCP within acceptable threshold for 3G; skeleton screens or placeholders present to improve perceived performance.</li>
+                    <li>Preconditions: Checkout flow and payment gateway integration configured with retry/fallback logic.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Initiate checkout and simulate payment gateway timeout.</li>
+                        <li>Check order status in DB and user-facing message.</li>
+                        <li>Retry payment and confirm no duplicate charges.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Order set to PAYMENT_PENDING (not stuck in PROCESSING); user sees clear retry message; idempotent retry prevents duplicate charges; inventory not permanently reserved incorrectly.</li>
                   </ol>
-                </div>
-              </div>
+                </li>
+
+                <li style="margin-top:8px"><strong>INT-FS-002 — External Service Degradation</strong>
+                  <ol>
+                    <li>Preconditions: Multiple external services (email, SMS, address validation) integrated.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Disable email service and register user; observe behavior.</li>
+                        <li>Disable SMS and request password reset; observe fallback strategies.</li>
+                        <li>Disable address validation and submit address.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Application continues with degraded features, queues messages for retry, shows clear explanatory messages, and no data loss.</li>
+                  </ol>
+                </li>
+              </ol>
+            </div>
+
+            <!-- UX / Usability -->
+            <div class="tc">
+              <h4>User Experience & Form Resilience — Clear Errors & Persistence (UX-UE)</h4>
+              <div class="meta-row"><div>Priority: Medium</div><div>Focus: Clarity & persistence</div></div>
+
+              <ol>
+                <li><strong>UX-UE-001 — Error Message Clarity</strong>
+                  <ol>
+                    <li>Preconditions: Validation rules and UI highlighting configured.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Submit form with multiple validation errors.</li>
+                        <li>Enter wrong password on login.</li>
+                        <li>Search with no results and access restricted page without permission.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Errors are actionable and specific; suggestions or links to recovery present; fields highlighted; errors accessible to screen readers.</li>
+                  </ol>
+                </li>
+
+                <li style="margin-top:8px"><strong>UX-UE-002 — Form Persistence & Auto-Save</strong>
+                  <ol>
+                    <li>Preconditions: Multi-step or long forms exist.</li>
+                    <li>Steps:
+                      <ol>
+                        <li>Fill long multi-page form, navigate away, return, refresh, and use back/forward navigation.</li>
+                        <li>Simulate accidental refresh and confirm saved state.</li>
+                      </ol>
+                    </li>
+                    <li>Expected: Data preserved across navigation; auto-save warning when leaving; undo/restore available where appropriate.</li>
+                  </ol>
+                </li>
+              </ol>
+            </div>
+
+            <!-- Critical Thinking overview -->
+            <div class="tc">
+              <h4>Analytical Testing & Critical Thinking — Advanced QA Scenarios</h4>
+              <div class="meta-row"><div>Priority: Informational</div><div>Focus: Risk-based & exploratory testing</div></div>
+              <p style="margin:8px 0;color:var(--primary)">This collection demonstrates proactive testing — exploring edge cases, failure modes, integration resilience, and UX recovery scenarios. Use these cases to strengthen test plans, risk analysis, and automation prioritization.</p>
             </div>
 
           </div>
@@ -448,34 +507,37 @@
     }, { threshold: 0.12 });
     document.querySelectorAll('.animate').forEach(el=>io.observe(el));
 
-    // Accordion toggle
-    function toggleAccordion(id, btn){
-      const content = document.getElementById(id);
+    // Single accordion button toggles the full test suite panel
+    function toggleAccordionMain(){
+      const btn = document.getElementById('accordion-main-button');
+      const content = document.getElementById('accordion-main-content');
       const isOpen = content.classList.contains('open');
-      // Close all siblings (single-open behavior)
-      document.querySelectorAll('.accordion-content').forEach(c=>{ c.classList.remove('open'); c.previousElementSibling.setAttribute('aria-expanded','false'); });
-      if(!isOpen){
+      if (!isOpen){
         content.classList.add('open');
         btn.setAttribute('aria-expanded','true');
-        // smooth scroll into view when opened
-        setTimeout(()=>content.scrollIntoView({behavior:'smooth',block:'center'}),120);
+        // scroll a bit so content is visible
+        setTimeout(()=>content.scrollIntoView({behavior:'smooth', block:'center'}),120);
       } else {
+        content.classList.remove('open');
         btn.setAttribute('aria-expanded','false');
       }
     }
 
-    // Make accordion buttons keyboard friendly
+    // helper used by project "Open Test Cases" quick-links
+    function openTestCases(){ 
+      const btn = document.getElementById('accordion-main-button');
+      const content = document.getElementById('accordion-main-content');
+      if (!content.classList.contains('open')){
+        toggleAccordionMain();
+      } else {
+        content.scrollIntoView({behavior:'smooth',block:'center'});
+      }
+    }
+
+    // keyboard accessibility
     document.querySelectorAll('.accordion-button').forEach(b=>{
       b.addEventListener('keydown', (e)=>{
         if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); b.click(); }
-      });
-    });
-
-    // Attach data-labels for responsive tables if any
-    document.querySelectorAll('table').forEach(tbl=>{
-      const ths = Array.from(tbl.querySelectorAll('thead th')).map(h=>h.textContent.trim());
-      tbl.querySelectorAll('tbody tr').forEach(tr=>{
-        tr.querySelectorAll('td').forEach((td,i)=> td.setAttribute('data-label', ths[i] || ''));
       });
     });
   </script>
