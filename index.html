@@ -12,9 +12,10 @@
       --secondary:#247BA0;    /* Steel Blue */
       --accent:#FDFFFC;       /* Cream White */
       --muted:#8E8E8E;        /* Medium Gray */
+      --glass: rgba(36,123,160,0.06);
       --container:1100px;
       --radius:12px;
-      --glass: rgba(36,123,160,0.06);
+      --accent-cta: linear-gradient(90deg,#247BA0,#2FA4D9);
     }
 
     /* Reset & basics */
@@ -27,8 +28,45 @@
       color:var(--primary);
       padding:36px 20px;
       -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
-    .wrap{max-width:var(--container);margin:0 auto}
+    .wrap{max-width:var(--container);margin:0 auto;position:relative;z-index:1}
+
+    /* PRELOADER / WELCOME OVERLAY */
+    .overlay{
+      position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:9999;
+      background:linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.06));
+      backdrop-filter: blur(6px);
+      transition:opacity .45s ease, visibility .45s ease;
+    }
+    .overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .welcome-card{
+      width:min(920px,94%);max-width:1000px;border-radius:14px;padding:26px;background:rgba(253,255,252,0.98);
+      box-shadow:0 30px 70px rgba(37,61,80,0.12);display:flex;gap:20px;align-items:center;overflow:hidden;
+      transform:translateY(8px);animation:cardIn .7s cubic-bezier(.2,.9,.2,1) both;
+    }
+    @keyframes cardIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .welcome-left{flex:0 0 140px;display:grid;place-items:center}
+    .welcome-avatar{width:120px;height:120px;border-radius:999px;overflow:hidden;border:6px solid var(--secondary);background:var(--primary)}
+    .welcome-avatar img{width:100%;height:100%;object-fit:cover}
+    .welcome-body{flex:1}
+    .welcome-title{margin:0;font-size:1.4rem;color:var(--primary);font-weight:800}
+    .welcome-sub{color:var(--muted);margin-top:6px}
+    .welcome-actions{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+    .small-cta{padding:10px 14px;border-radius:10px;background:var(--accent-cta);color:var(--accent);text-decoration:none;font-weight:700;display:inline-flex;gap:8px;align-items:center}
+    .secondary-cta{padding:10px 12px;border-radius:10px;background:transparent;border:1px solid rgba(80,81,79,0.06);color:var(--primary);text-decoration:none;font-weight:700}
+    .welcome-note{font-size:0.94rem;color:var(--primary);margin-top:8px}
+
+    /* visiting card modal */
+    .vcard{
+      position:fixed;right:20px;top:20px;width:320px;border-radius:12px;padding:16px;background:var(--accent);
+      box-shadow:0 18px 46px rgba(37,61,80,0.12);z-index:10001;transform:translateY(-20px);opacity:0;transition:all .36s ease;
+    }
+    .vcard.open{transform:none;opacity:1}
+    .vcard .row{display:flex;gap:12px;align-items:center}
+    .vcard .name{font-weight:800;color:var(--primary);margin:0}
+    .vcard .meta{color:var(--muted);font-size:0.92rem;margin-top:4px}
+    .vcard .vc-actions{margin-top:10px;display:flex;gap:8px}
 
     /* decorative background shapes */
     .page-decor{
@@ -45,15 +83,16 @@
       border:1px solid rgba(80,81,79,0.06);
       box-shadow: 0 10px 40px rgba(16,24,32,0.04);
       overflow:hidden;
+      transition:transform .28s ease, box-shadow .28s ease;
     }
-    /* small animated accent */
+    header.hero:hover{transform:translateY(-4px)}
     header.hero::before{
       content:"";position:absolute;left:-80px;top:-60px;width:260px;height:260px;background:radial-gradient(circle at 30% 30%, rgba(36,123,160,0.06), transparent 30%);transform:rotate(18deg);filter:blur(14px);pointer-events:none;
     }
     .avatar{
       width:136px;height:136px;border-radius:999px;overflow:hidden;border:6px solid var(--secondary);
       display:grid;place-items:center;background:var(--accent);flex:0 0 136px;
-      box-shadow:0 8px 28px rgba(36,123,160,0.06);
+      box-shadow:0 8px 28px rgba(36,123,160,0.06);cursor:pointer;
     }
     .avatar img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-body{flex:1;min-width:0}
@@ -77,6 +116,7 @@
     .card{
       background:var(--accent);padding:18px;border-radius:12px;border:1px solid rgba(80,81,79,0.06);
       box-shadow:0 8px 28px rgba(16,24,32,0.04);transition:transform .28s ease,box-shadow .28s ease;
+      overflow:hidden;
     }
     .card:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(16,24,32,0.06)}
     h2.section-title{margin:0 0 10px 0;color:var(--secondary);font-size:1.05rem;display:flex;align-items:center;gap:12px}
@@ -106,7 +146,7 @@
     .meta-row{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:0.9rem;margin-bottom:8px}
     .tc ol{margin:8px 0 0 18px;color:var(--primary)}
 
-    /* icons */
+    /* icons & micro-animations */
     .icon{width:20px;height:20px;display:inline-block;vertical-align:middle}
     .icon.rotate svg{animation:rotate 6s linear infinite}
     .icon.pulse svg{animation:pulse 1.8s ease-in-out infinite}
@@ -115,17 +155,16 @@
     @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.08)}100%{transform:scale(1)}}
     @keyframes bounce{0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
 
-    /* small screens */
-    @media (max-width:920px){ .grid-2{grid-template-columns:1fr} .contact{margin-left:0;margin-top:8px;text-align:left} header.hero{flex-direction:column;align-items:flex-start} }
+    /* visiting card animation */
+    .vcard .email{color:var(--secondary);font-weight:700}
+    .vcard .vc-actions .btn{padding:8px 10px;font-size:0.92rem}
+
+    /* responsive */
+    @media (max-width:920px){ .grid-2{grid-template-columns:1fr} .contact{margin-left:0;margin-top:8px;text-align:left} header.hero{flex-direction:column;align-items:flex-start} .vcard{right:12px;left:12px;top:auto;bottom:12px;width:auto} }
     @media (max-width:520px){
-      body{padding:20px}
+      body{padding:18px}
       .avatar{width:96px;height:96px}
       h1.name{font-size:1.25rem}
-      table, thead, tbody, th, td, tr { display: block; }
-      thead { display: none; }
-      tr { margin-bottom: 12px; border: 1px solid rgba(80,81,79,0.04); border-radius: 8px; padding: 8px; }
-      td { border: none; padding: 6px 0; }
-      td:before { content: attr(data-label); display:inline-block; width:120px; color:var(--secondary); font-weight:700; }
     }
 
     /* subtle entrance */
@@ -137,14 +176,55 @@
   </style>
 </head>
 <body>
+  <!-- overlay while loading + welcome banner -->
+  <div id="overlay" class="overlay" role="dialog" aria-modal="true" aria-label="Welcome">
+    <div class="welcome-card" role="document">
+      <div class="welcome-left">
+        <div class="welcome-avatar" title="Click to open visiting card">
+          <img id="overlay-avatar" src="images/profile.jpg" alt="Seelam Durga Kiran" onerror="this.src='https://avatars.githubusercontent.com/u/9919?s=200&v=4'">
+        </div>
+      </div>
+      <div class="welcome-body">
+        <h2 class="welcome-title">Welcome — Seelam Durga Kiran</h2>
+        <div class="welcome-sub">Quality Assurance Engineer — Manual Testing • API Testing • Test Automation</div>
+        <div class="welcome-actions">
+          <a href="Kiran_ATS_Resume.pdf" class="small-cta" download target="_blank" rel="noopener">Download Resume</a>
+          <a href="#" class="secondary-cta" id="open-vcard-overlay">View Visiting Card</a>
+        </div>
+        <div class="welcome-note">This quick visiting card appears before the page loads — click "View Visiting Card" to open contact details. The site will finish loading behind this screen.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- visiting card (modal-like, appears when avatar clicked) -->
+  <div id="vcard" class="vcard" role="dialog" aria-modal="false" aria-hidden="true" style="display:none">
+    <div class="row">
+      <div style="width:56px;height:56px;border-radius:999px;overflow:hidden;border:3px solid var(--secondary)">
+        <img src="images/profile.jpg" alt="Seelam Durga Kiran" style="width:56px;height:56px;object-fit:cover" onerror="this.src='https://avatars.githubusercontent.com/u/9919?s=200&v=4'">
+      </div>
+      <div>
+        <p class="name">SEELAM DURGA KIRAN</p>
+        <div class="meta">Quality Assurance Engineer</div>
+        <div class="meta" style="font-size:0.9rem;color:var(--muted)">Rajahmundry, India</div>
+      </div>
+    </div>
+
+    <div style="margin-top:10px">
+      <div class="meta">Email: <a class="email" href="mailto:sdkiran.qualityengineer@gmail.com">sdkiran.qualityengineer@gmail.com</a></div>
+      <div class="meta">Mobile: <strong style="color:var(--primary)">+91 9000707631</strong></div>
+      <div class="vc-actions">
+        <a class="btn" href="Kiran_ATS_Resume.pdf" download target="_blank" rel="noopener">⤓ Resume</a>
+        <a class="btn alt" href="mailto:sdkiran.qualityengineer@gmail.com">✉ Email</a>
+      </div>
+    </div>
+  </div>
+
   <div class="page-decor" aria-hidden="true"></div>
 
-  <div class="wrap">
+  <div class="wrap" id="site-wrap" aria-hidden="true">
     <header class="hero animate" role="banner" aria-labelledby="hero-name">
-      <div class="avatar" aria-hidden="true">
-        <!-- Simple changeable profile picture: place your image at images/profile.jpg.
-             Fallback to GitHub avatar if not present. -->
-        <img src="images/profile.jpg" alt="Seelam Durga Kiran" onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/9919?s=200&v=4'">
+      <div class="avatar" id="avatar-top" title="Open visiting card">
+        <img src="images/profile.jpg" alt="Seelam Durga Kiran" onerror="this.src='https://avatars.githubusercontent.com/u/9919?s=200&v=4'">
       </div>
 
       <div class="hero-body">
@@ -164,44 +244,13 @@
     </header>
 
     <main>
-      <!-- Key achievements (new requested placement) -->
-      <section class="card animate" id="achievements" aria-labelledby="achievements-title">
-        <h2 id="achievements-title" class="section-title">
-          <span class="icon pulse" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2l2.9 6.1L21 9.1l-5 3.8L17 21l-5-3.2L7 21l1-8.1-5-3.8 6.1-.9L12 2z" fill="#247BA0" opacity="0.95"/>
-            </svg>
-          </span>
-          KEY ACHIEVEMENTS
-        </h2>
-        <div style="color:var(--primary);margin-top:10px">
-          <ul style="color:var(--muted);margin:0 0 0 18px;line-height:1.6">
-            <li><strong>Improved Release Stability:</strong> Reduced production bug leakage by 25% through enhanced regression test suites and rigorous smoke testing protocols.</li>
-            <li><strong>Enhanced Test Efficiency:</strong> Authored and executed 300+ manual test cases, achieving 98% test coverage of business requirements.</li>
-            <li><strong>Accelerated Defect Resolution:</strong> Streamlined defect lifecycle in JIRA, leading to 95% on-time resolution for critical and major bugs.</li>
-            <li><strong>Pioneered Automation Efforts:</strong> Developed initial set of 20+ Selenium-Java scripts for regression scenarios, laying the foundation for the team's future automation suite.</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Professional Summary -->
-      <section class="card animate" id="summary" aria-labelledby="summary-title">
-        <h2 id="summary-title" class="section-title">
-          <span class="icon rotate" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 1010 10A10.011 10.011 0 0012 2zm1 15h-2v-6h2zm0-8h-2V7h2z" fill="#247BA0"/></svg>
-          </span>
-          Professional Summary
-        </h2>
-        <p class="lead">Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual and API Testing, now expanding into Test Automation. Proven expertise in end-to-end testing, test planning, defect management, and Agile methodologies. Hands-on experience in Selenium-Java scripting and improving test efficiency, coverage, and collaboration within cross-functional teams to ensure high-quality software releases.</p>
-      </section>
-
-      <!-- Technical Skills -->
+      <!-- Technical Skills + Key Achievements (achievements nested under skills) -->
       <section class="card animate" id="technical-skills" aria-labelledby="skills-title">
         <h2 id="skills-title" class="section-title">
           <span class="icon bounce" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg"><path d="M6 2h12v4H6zM4 8h16v2H4zM2 12h20v6H2z" fill="#247BA0"/></svg>
           </span>
-          Technical Skills
+          Technical Skills & Key Achievements
         </h2>
 
         <div class="grid-2">
@@ -222,6 +271,16 @@
               <div><strong>Soft Skills:</strong> Analytical Thinking, Problem-Solving, Effective Communication, Cross-functional Collaboration</div>
             </div>
           </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <h3 style="margin:0;color:var(--secondary)">Key Achievements</h3>
+          <ul style="color:var(--muted);margin-top:8px;line-height:1.6">
+            <li><strong>Improved Release Stability:</strong> Reduced production bug leakage by 25% through enhanced regression test suites and rigorous smoke testing protocols.</li>
+            <li><strong>Enhanced Test Efficiency:</strong> Authored and executed 300+ manual test cases, achieving 98% test coverage of business requirements.</li>
+            <li><strong>Accelerated Defect Resolution:</strong> Streamlined defect lifecycle in JIRA, leading to 95% on-time resolution for critical and major bugs.</li>
+            <li><strong>Pioneered Automation Efforts:</strong> Developed initial set of 20+ Selenium-Java scripts for regression scenarios, laying the foundation for the team's future automation suite.</li>
+          </ul>
         </div>
       </section>
 
@@ -259,7 +318,7 @@
         </div>
       </section>
 
-      <!-- Projects (two only) -->
+      <!-- Projects -->
       <section id="projects" class="card animate" aria-labelledby="projects-title">
         <h2 id="projects-title" class="section-title">
           <span class="icon pulse" aria-hidden="true">
@@ -580,14 +639,49 @@
   </div>
 
   <script>
-    // current year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // show/hide overlay based on load, and allow opening visiting card while overlay active
+    const overlay = document.getElementById('overlay');
+    const siteWrap = document.getElementById('site-wrap');
+    const vcard = document.getElementById('vcard');
+    const avatarTop = document.getElementById('avatar-top');
+    const overlayAvatar = document.getElementById('overlay-avatar');
+    const openVcardBtn = document.getElementById('open-vcard-overlay');
 
-    // intersection reveal
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.animate').forEach(el=>io.observe(el));
+    function openVCard(){
+      vcard.style.display = 'block';
+      setTimeout(()=> vcard.classList.add('open'), 20);
+      vcard.setAttribute('aria-hidden','false');
+    }
+    function closeVCard(){
+      vcard.classList.remove('open');
+      setTimeout(()=> vcard.style.display = 'none', 300);
+      vcard.setAttribute('aria-hidden','true');
+    }
+
+    avatarTop.addEventListener('click', openVCard);
+    overlayAvatar.addEventListener('click', openVCard);
+    openVcardBtn.addEventListener('click', (e)=>{ e.preventDefault(); openVCard(); });
+
+    // close vcard when clicking outside
+    document.addEventListener('click', (e)=>{
+      if(!vcard.contains(e.target) && !avatarTop.contains(e.target) && !overlayAvatar.contains(e.target) && vcard.style.display==='block'){
+        closeVCard();
+      }
+    });
+
+    // hide overlay when fully loaded (simulate quickly)
+    window.addEventListener('load', () => {
+      // allow a short delay so visitor sees the welcome card
+      setTimeout(()=>{
+        overlay.classList.add('hidden');
+        // reveal site content and animate sections
+        siteWrap.setAttribute('aria-hidden','false');
+        document.querySelectorAll('.animate').forEach(el => el.classList.add('show'));
+      }, 650);
+    });
+
+    // setup year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     // accordion toggle
     function toggleAccordionMain(){
@@ -601,23 +695,29 @@
         content.classList.remove('open'); btn.setAttribute('aria-expanded','false');
       }
     }
-    function openTestCases(){
+    function openTestCases(){ 
       const btn = document.getElementById('accordion-main-button');
       const content = document.getElementById('accordion-main-content');
       if (!content.classList.contains('open')) toggleAccordionMain();
       else content.scrollIntoView({behavior:'smooth',block:'center'});
     }
 
-    // keyboard accessibility
-    document.querySelectorAll('.accordion-button').forEach(b=>{
-      b.addEventListener('keydown', (e)=>{
-        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); b.click(); }
+    // keyboard accessibility for overlay actions
+    document.querySelectorAll('a, button, .avatar').forEach(el=>{
+      el.classList.add('focusable');
+      el.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); el.click(); }
       });
     });
 
-    // small perf: add focus ring to action links
-    document.querySelectorAll('a, button').forEach(el=>{
-      el.classList.add('focusable');
+    // make overlay closable by Escape key once site has loaded
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        overlay.classList.add('hidden');
+        siteWrap.setAttribute('aria-hidden','false');
+        document.querySelectorAll('.animate').forEach(el => el.classList.add('show'));
+        closeVCard();
+      }
     });
   </script>
 </body>
