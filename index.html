@@ -5,331 +5,477 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Seelam Durga Kiran — QA Engineer</title>
   <meta name="description" content="Seelam Durga Kiran — Quality Assurance Engineer. Projects, test cases, and resume." />
-  <meta name="theme-color" content="#0b0b0b" />
+  <meta name="theme-color" content="#50514F" />
   <style>
     :root{
-      --bg:#050505;
-      --card:#0f0f0f;
-      --muted:#bfbfbf;
-      --gold:#D4AF37;
-      --gold-2:#bfa65a;
-      --accent:linear-gradient(90deg,var(--gold),var(--gold-2));
+      --primary: #50514F;      /* Charcoal Gray */
+      --secondary:#247BA0;    /* Steel Blue */
+      --accent:#FDFFFC;       /* Cream White */
+      --muted:#8E8E8E;        /* Medium Gray */
       --container:1100px;
-      --glass: rgba(255,255,255,0.02);
+      --radius:12px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(212,175,55,0.03), transparent),
-                  radial-gradient(900px 400px at 90% 90%, rgba(191,166,90,0.02), transparent),
-                  var(--bg);
-      color:#ececec; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      margin:0;
+      font-family: Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: linear-gradient(180deg, #eef3f6 0%, var(--accent) 100%);
+      color:var(--primary);
       padding:36px 20px;
-      -webkit-tap-highlight-color: transparent;
+      -webkit-font-smoothing:antialiased;
     }
-
     .wrap{max-width:var(--container);margin:0 auto}
 
-    /* Header / Hero */
-    .hero{
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid rgba(255,255,255,0.04);
-      padding:28px;border-radius:12px;display:flex;gap:20px;align-items:center;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    header.hero{
+      display:flex;gap:20px;align-items:center;padding:26px;border-radius:var(--radius);
+      background: linear-gradient(180deg, rgba(36,123,160,0.06), rgba(80,81,79,0.02));
+      border:1px solid rgba(80,81,79,0.06);
+      box-shadow: 0 8px 30px rgba(80,81,79,0.06);
       position:relative; overflow:hidden;
     }
-    .hero::after{
-      content:"";position:absolute;right:-120px;top:-40px;width:320px;height:320px;background:conic-gradient(from 200deg at 50% 50%, rgba(212,175,55,0.06), transparent 30%);transform:rotate(10deg);
-      filter:blur(28px);pointer-events:none;
-    }
     .avatar{
-      flex:0 0 120px;height:120px;border-radius:16px;overflow:hidden;border:2px solid rgba(212,175,55,0.12);
-      display:grid;place-items:center;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      width:128px;height:128px;border-radius:999px;overflow:hidden;border:6px solid var(--secondary);
+      display:grid;place-items:center;background:var(--accent);
+      flex:0 0 128px;
     }
     .avatar img{width:100%;height:100%;object-fit:cover;display:block}
     .hero-body{flex:1;min-width:0}
-    .name{
-      font-size:1.6rem;font-weight:700;letter-spacing:0.6px;margin:0;
-      background: -webkit-linear-gradient(45deg, #fff, #ffd;); /* fallback */
-      background: var(--accent);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 6px 24px rgba(0,0,0,0.6);
-    }
-    .meta{color:var(--muted);margin-top:6px;font-size:0.95rem}
-    .cta-row{margin-top:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    h1.name{margin:0;font-size:1.6rem;color:var(--primary);letter-spacing:0.6px}
+    .subtitle{color:var(--muted);margin-top:6px;font-size:0.95rem}
+    .actions{margin-top:14px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
     .btn{
       display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;
-      background:linear-gradient(90deg,var(--gold),var(--gold-2));color:#0b0b0b;font-weight:700;text-decoration:none;border:none;cursor:pointer;
-      box-shadow:0 8px 30px rgba(191,166,90,0.09);transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+      text-decoration:none;font-weight:700;border:none;cursor:pointer;
+      background:var(--secondary);color:var(--accent);box-shadow: 0 8px 20px rgba(36,123,160,0.12);transition: transform .16s ease;
     }
-    .btn.secondary{
-      background:transparent;color:var(--gold);border:1px solid rgba(212,175,55,0.16);font-weight:600;
-    }
-    .btn:hover{transform:translateY(-4px)}
-    .contact{margin-left:auto;text-align:right;color:var(--muted);font-size:0.95rem}
-    .contact a{color:var(--gold);text-decoration:none;font-weight:600}
+    .btn.alt{background:transparent;color:var(--primary);border:1px solid rgba(80,81,79,0.08);font-weight:700}
+    .btn:focus{outline:3px solid rgba(36,123,160,0.15);outline-offset:3px}
+    .contact{margin-left:auto;text-align:right;color:var(--primary)}
+    .contact .small{color:var(--muted);font-size:0.95rem}
 
-    /* Sections */
-    main{margin-top:24px;display:grid;grid-template-columns:1fr;gap:20px}
+    main{margin-top:22px;display:grid;grid-template-columns:1fr;gap:18px}
+
     .card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
-      border:1px solid rgba(255,255,255,0.03);padding:20px;border-radius:12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-      transition: transform 0.32s ease, box-shadow 0.32s ease;
+      background:var(--accent);padding:18px;border-radius:12px;border:1px solid rgba(80,81,79,0.06);
+      box-shadow:0 8px 28px rgba(16,24,32,0.04);transition:transform .28s ease,box-shadow .28s ease;
     }
-    .card:hover{transform:translateY(-6px);box-shadow: 0 18px 44px rgba(0,0,0,0.7);}
-    h2.section-title{margin:0 0 12px 0;font-size:1.15rem;color:var(--gold);display:flex;align-items:center;gap:12px}
-    .lead{color:var(--muted);margin-top:8px;line-height:1.5}
+    .card:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(16,24,32,0.06)}
+    h2.section-title{margin:0 0 10px 0;color:var(--secondary);font-size:1.05rem;display:flex;align-items:center;gap:12px}
+    p.lead{color:var(--primary);line-height:1.6;margin:0}
 
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-    .skills-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-    .chip{background:transparent;border:1px solid rgba(212,175,55,0.12);color:var(--gold);padding:8px 10px;border-radius:999px;font-weight:600;font-size:0.9rem}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .skills-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .chip{background:transparent;border:1px solid rgba(36,123,160,0.12);color:var(--primary);padding:8px 10px;border-radius:999px;font-weight:600}
 
     /* Projects */
-    #projects .project-card{
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.015));
-      border:1px solid rgba(255,255,255,0.04);
-      color:#e9e6de;
+    .project-card{background:linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);border-radius:10px;padding:16px;border:1px solid rgba(80,81,79,0.06)}
+    .project-card h3{margin:0;color:var(--primary)}
+    .project-card p{margin:8px 0;color:var(--muted)}
+    .project-actions{margin-top:8px;display:flex;gap:10px;flex-wrap:wrap}
+
+    /* Accordion styles */
+    .accordion{margin-top:12px;border-radius:10px;overflow:hidden;border:1px solid rgba(36,123,160,0.08)}
+    .accordion-item{border-bottom:1px solid rgba(80,81,79,0.04);background:var(--accent)}
+    .accordion-button{
+      width:100%;text-align:left;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;
+      background:linear-gradient(90deg, rgba(36,123,160,0.02), transparent);border:none;cursor:pointer;font-weight:700;color:var(--primary);
     }
-    .project-card h3{margin:0 0 6px 0;color:var(--gold)}
-    .project-card p{margin:0 8px 10px 0;color:var(--muted)}
-    .project-card ul{margin:8px 0 12px 20px;color:var(--muted)}
-    table{width:100%;border-collapse:collapse;margin-top:8px;background:transparent}
-    table th, table td{border:1px solid rgba(255,255,255,0.04);padding:10px;text-align:left;font-size:0.95rem}
-    table th{background:rgba(212,175,55,0.06);color:var(--gold);font-weight:700}
-    /* Small screens: responsive tables */
-    @media (max-width:820px){
-      .grid-2{grid-template-columns:1fr}
-      .hero{flex-direction:column;align-items:flex-start}
-      .contact{margin-left:0;margin-top:12px;text-align:left}
-    }
+    .accordion-button:focus{outline:3px solid rgba(36,123,160,0.12);outline-offset:3px}
+    .accordion-content{max-height:0;overflow:hidden;transition:max-height .36s ease,padding .24s ease;padding:0 16px}
+    .accordion-content.open{padding:16px;max-height:2000px}
+
+    table{width:100%;border-collapse:collapse;margin-top:8px}
+    table th, table td{border:1px solid rgba(80,81,79,0.06);padding:10px;text-align:left;font-size:0.95rem}
+    table th{background:var(--secondary);color:var(--accent);font-weight:700}
+
+    /* Test case block */
+    .tc{background:#fff;padding:12px;border-radius:8px;border:1px solid rgba(36,123,160,0.06);margin-bottom:10px}
+    .tc h4{margin:0 0 8px 0;color:var(--primary)}
+    .meta-row{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:0.9rem;margin-bottom:8px}
+
+    /* Small screens */
+    @media (max-width:920px){ .grid-2{grid-template-columns:1fr} .contact{margin-left:0;margin-top:8px;text-align:left} header.hero{flex-direction:column;align-items:flex-start} }
     @media (max-width:520px){
       body{padding:20px}
       .avatar{width:96px;height:96px}
-      .name{font-size:1.25rem}
+      h1.name{font-size:1.25rem}
       table, thead, tbody, th, td, tr { display: block; }
       thead { display: none; }
-      tr { margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.03); border-radius: 8px; padding: 8px; }
+      tr { margin-bottom: 12px; border: 1px solid rgba(80,81,79,0.04); border-radius: 8px; padding: 8px; }
       td { border: none; padding: 6px 0; }
-      td:before { content: attr(data-label); display:inline-block; width:120px; color:var(--gold); font-weight:700; }
+      td:before { content: attr(data-label); display:inline-block; width:120px; color:var(--secondary); font-weight:700; }
     }
 
-    /* subtle entrance animation */
-    .animate{opacity:0;transform:translateY(20px);transition: all 700ms cubic-bezier(.2,.9,.2,1);}
+    /* subtle fade in */
+    .animate{opacity:0;transform:translateY(10px);transition:all .7s cubic-bezier(.2,.9,.2,1)}
     .animate.show{opacity:1;transform:none}
-    /* footer */
+
     footer{margin-top:18px;color:var(--muted);text-align:center;font-size:0.9rem}
-    a.focusable:focus{outline:3px solid rgba(212,175,55,0.18);outline-offset:4px;border-radius:8px}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="hero animate" role="banner" aria-labelledby="hero-name">
       <div class="avatar" aria-hidden="true">
-        <!-- Replace with your profile image if available -->
-        <img src="https://avatars.githubusercontent.com/u/000000?v=4" alt="Profile photo">
+        <!-- Use the provided profile picture file - upload it to repo path /images/profile.jpg -->
+        <img src="images/profile.jpg" alt="Seelam Durga Kiran">
       </div>
 
       <div class="hero-body">
         <h1 id="hero-name" class="name">SEELAM DURGA KIRAN</h1>
-        <div class="meta">Quality Assurance Engineer • Selenium (Java) • API Testing • Test Automation (in progress)</div>
+        <div class="subtitle">Email: <a class="link" href="mailto:sdkiran.qualityengineer@gmail.com">sdkiran.qualityengineer@gmail.com</a>  |  Mobile: +91 9000707631  |  Rajahmundry, India</div>
 
-        <div class="cta-row">
-          <a class="btn focusable" href="Kiran_ATS_Resume.pdf" target="_blank" rel="noopener noreferrer" download aria-label="Download resume">
-            ⤓ Download Resume
-          </a>
-          <a class="btn secondary focusable" href="mailto:sdkiran.qualityengineer@gmail.com" aria-label="Send email">✉ sdkiran.qualityengineer@gmail.com</a>
-
+        <div class="actions">
+          <a class="btn" href="Kiran_ATS_Resume.pdf" download target="_blank" rel="noopener noreferrer" aria-label="Download resume">⤓ Download Resume</a>
+          <a class="btn alt" href="mailto:sdkiran.qualityengineer@gmail.com" aria-label="Email">✉ Send Email</a>
           <div class="contact" aria-hidden="false">
-            <div style="font-weight:700">+91 9000707631</div>
-            <div style="color:var(--muted);font-size:0.95rem">Rajahmundry, India</div>
+            <div style="font-weight:700;color:var(--primary)">Quality Assurance Engineer</div>
+            <div class="small">Selenium (Java) • API Testing • Test Automation (POM, TestNG) • JIRA • Zephyr</div>
           </div>
         </div>
       </div>
     </header>
 
     <main>
-      <!-- Professional Summary -->
+      <!-- Summary -->
       <section class="card animate" id="summary" aria-labelledby="summary-title">
         <h2 id="summary-title" class="section-title">Professional Summary</h2>
         <p class="lead">Detail-oriented Quality Assurance Engineer with 8 years of experience in Manual and API Testing, now expanding into Test Automation. Proven expertise in end-to-end testing, test planning, defect management, and Agile methodologies. Hands-on experience in Selenium-Java scripting and improving test efficiency, coverage, and collaboration within cross-functional teams to ensure high-quality software releases.</p>
       </section>
 
-      <!-- Technical Skills & Achievements -->
+      <!-- Skills & Achievements -->
       <section class="card animate" id="skills" aria-labelledby="skills-title">
-        <h2 id="skills-title" class="section-title">Technical Skills</h2>
-
+        <h2 id="skills-title" class="section-title">Technical Skills & Achievements</h2>
         <div class="grid-2">
           <div>
-            <div style="font-weight:700;color:var(--gold);margin-bottom:8px">Testing & Automation</div>
-            <div class="lead">
-              Manual & Functional Testing: Test Planning & Strategy, Test Case Design, Functional, Integration, System, Regression, Smoke, Sanity, UI, Cross-Browser, UAT<br>
-              API Testing: Postman, Swagger, REST API, JSON/XML Validation<br>
-              Test Automation (Basic): Selenium WebDriver (Java), Playwright, TestNG, Maven, Page Object Model (POM)
+            <h3 style="margin:0;color:var(--secondary)">Technical Skills</h3>
+            <div class="skills-list">
+              <span class="chip">Manual & Functional Testing</span>
+              <span class="chip">API Testing (Postman)</span>
+              <span class="chip">Selenium WebDriver (Java)</span>
+              <span class="chip">Playwright • TestNG • Maven</span>
+              <span class="chip">JIRA • Zephyr • ADO • Git</span>
             </div>
           </div>
           <div>
-            <div style="font-weight:700;color:var(--gold);margin-bottom:8px">Tools, Methodologies & Soft Skills</div>
-            <div class="lead">
-              Tools & Platforms: JIRA, Zephyr, TFS, Azure DevOps, Git, WinSCP, CI/CD Awareness, Figma<br>
-              Methodologies: Agile Scrum, Waterfall, STLC, SDLC<br>
-              Soft Skills: Analytical Thinking, Problem-Solving, Effective Communication, Cross-functional Collaboration
-            </div>
+            <h3 style="margin:0;color:var(--secondary)">Key Achievements</h3>
+            <ul style="margin-top:10px;color:var(--primary)">
+              <li>Reduced production bug leakage by 25% via improved regression suites and smoke testing.</li>
+              <li>Authored and executed 300+ manual test cases; achieved 98% coverage vs business requirements.</li>
+              <li>Streamlined defect lifecycle in JIRA, achieving 95% on-time resolution for critical issues.</li>
+              <li>Built initial 20+ Selenium-Java scripts to accelerate regression automation adoption.</li>
+            </ul>
           </div>
-        </div>
-
-        <div style="margin-top:14px">
-          <h3 style="margin:0 0 8px 0;color:var(--gold);font-size:1rem">Key Achievements</h3>
-          <ul style="color:var(--muted);margin-top:6px">
-            <li>Reduced production bug leakage by 25% through enhanced regression suites and smoke testing.</li>
-            <li>Authored and executed 300+ manual test cases, achieving 98% test coverage of business requirements.</li>
-            <li>Streamlined defect lifecycle in JIRA, leading to 95% on-time resolution for critical bugs.</li>
-            <li>Developed initial 20+ Selenium-Java scripts for regression scenarios and automation foundation.</li>
-          </ul>
         </div>
       </section>
 
-      <!-- Experience & Education -->
+      <!-- Experience -->
       <section class="card animate" id="experience" aria-labelledby="experience-title">
         <h2 id="experience-title" class="section-title">Professional Experience</h2>
 
         <div style="margin-top:10px">
-          <h3 style="margin:0;color:var(--gold)">Publicis Sapient — Quality Engineer</h3>
+          <h3 style="margin:0;color:var(--secondary)">Publicis Sapient — Quality Engineer</h3>
           <div style="color:var(--muted);margin-bottom:8px">May 2022 – Present</div>
-          <ul style="color:var(--muted)">
+          <ul style="color:var(--primary)">
             <li>Designed and executed test plans and 500+ test cases for web applications ensuring comprehensive coverage.</li>
-            <li>Performed end-to-end testing: Functional, Integration, Regression, Smoke, Sanity, UI, Cross-Browser.</li>
+            <li>Performed end-to-end testing: Functional, Integration, Regression, Smoke, Sanity, UI, Cross-browser.</li>
             <li>Conducted API testing using Postman; validated payloads, statuses and data integrity.</li>
-            <li>Managed defect lifecycle in JIRA; developed Selenium-Java scripts for high-priority regression cases.</li>
-            <li>Participated in Agile ceremonies: sprint planning, stand-ups, retrospectives.</li>
+            <li>Managed defects in JIRA and developed Selenium-Java scripts for high-priority regression automation.</li>
           </ul>
         </div>
 
-        <div style="margin-top:14px">
-          <h3 style="margin:0;color:var(--gold)">Boven Technologies — Associate Consultant</h3>
+        <div style="margin-top:12px">
+          <h3 style="margin:0;color:var(--secondary)">Boven Technologies — Associate Consultant</h3>
           <div style="color:var(--muted);margin-bottom:8px">Nov 2017 – May 2022</div>
-          <ul style="color:var(--muted)">
+          <ul style="color:var(--primary)">
             <li>Executed manual testing cycles across multiple web projects, enabling stable releases.</li>
-            <li>Authored test scenarios and collaborated with developers and analysts during requirement analysis.</li>
+            <li>Authored detailed test scenarios and collaborated with development and business teams.</li>
             <li>Performed regression testing across builds and environments to identify critical issues.</li>
           </ul>
         </div>
 
-        <div style="margin-top:14px;color:var(--muted)">
+        <div style="margin-top:12px;color:var(--primary)">
           <strong>Education:</strong> Bachelor of Technology – Mechanical Engineering, Godavari Institute of Engineering & Technology (JNTUK), 2012 – 2016
         </div>
-
-        <div style="margin-top:8px;color:var(--muted)">
-          <strong>Languages:</strong> English (Professional) | Telugu (Native) | Hindi (Conversational)
-        </div>
+        <div style="margin-top:8px;color:var(--primary)"><strong>Languages:</strong> English (Professional) | Telugu (Native) | Hindi (Conversational)</div>
       </section>
 
-      <!-- Projects (inserted earlier test cases) -->
+      <!-- Projects (without inline test cases) -->
       <section id="projects" class="card animate" aria-labelledby="projects-title">
-        <h2 id="projects-title" class="section-title">Projects & Test Cases</h2>
+        <h2 id="projects-title" class="section-title">Projects</h2>
 
         <!-- Project 1 -->
-        <div class="project-card animate">
+        <div class="project-card" style="margin-bottom:12px">
           <h3>UFH – UPS United Postal Services</h3>
           <p><strong>Role:</strong> QA Engineer | <strong>Technologies:</strong> Selenium (Java), Postman, JIRA, Zephyr</p>
-          <ul>
-            <li>Designed and executed detailed manual & automation test cases.</li>
-            <li>Performed end-to-end Functional, Regression, API, and UI Testing.</li>
-            <li>Validated APIs using Postman; tracked defects in JIRA ensuring full lifecycle coverage.</li>
-            <li>Improved test coverage & reduced regression time by 35% through automation scripts.</li>
-          </ul>
-          <p><strong>Sample Test Cases:</strong></p>
-          <table role="table" aria-label="UFH sample test cases">
-            <thead><tr><th>ID</th><th>Test Case</th><th>Expected Result</th></tr></thead>
-            <tbody>
-              <tr><td data-label="ID">TC001</td><td data-label="Test Case">Verify login functionality with valid credentials</td><td data-label="Expected Result">User should login successfully</td></tr>
-              <tr><td data-label="ID">TC002</td><td data-label="Test Case">Verify shipment tracking API returns correct status</td><td data-label="Expected Result">API returns 200 OK with valid JSON response</td></tr>
-              <tr><td data-label="ID">TC003</td><td data-label="Test Case">Check cross-browser rendering for homepage</td><td data-label="Expected Result">Homepage loads correctly in Chrome, Firefox, Edge</td></tr>
-            </tbody>
-          </table>
+          <p style="color:var(--muted)">Designed automated and manual test processes for complex shipping and tracking flows, API validation, and end-to-end regression suites that reduced release defects.</p>
+          <div class="project-actions">
+            <a class="btn alt" href="#testcases-Edge-Cases" onclick="document.getElementById('accordion-Edge-Cases').scrollIntoView({behavior:'smooth'});">View Test Cases</a>
+            <a class="btn" href="#" onclick="window.open('https://github.com','_blank')">View repo</a>
+          </div>
         </div>
 
         <!-- Project 2 -->
-        <div class="project-card animate">
+        <div class="project-card" style="margin-bottom:12px">
           <h3>Boven Technologies – AIOps Dashboard</h3>
           <p><strong>Role:</strong> QA Analyst | <strong>Technologies:</strong> Manual Testing, Selenium, API Validation, JIRA</p>
-          <ul>
-            <li>Executed manual testing for web-based dashboards ensuring defect-free release.</li>
-            <li>Performed regression testing for each build and validated fixes across environments.</li>
-            <li>Logged defects with detailed steps and screenshots in JIRA for developer tracking.</li>
-            <li>Supported UAT with clear test scenarios and end-to-end validation.</li>
-          </ul>
-          <p><strong>Sample Test Cases:</strong></p>
-          <table role="table" aria-label="Boven sample test cases">
-            <thead><tr><th>ID</th><th>Test Case</th><th>Expected Result</th></tr></thead>
-            <tbody>
-              <tr><td data-label="ID">TC101</td><td data-label="Test Case">Verify dashboard widgets load correctly</td><td data-label="Expected Result">All widgets display accurate data</td></tr>
-              <tr><td data-label="ID">TC102</td><td data-label="Test Case">Check API response for alert notifications</td><td data-label="Expected Result">Alerts received correctly in JSON response</td></tr>
-              <tr><td data-label="ID">TC103</td><td data-label="Test Case">Validate report download functionality</td><td data-label="Expected Result">Reports download as PDF/CSV without errors</td></tr>
-            </tbody>
-          </table>
+          <p style="color:var(--muted)">Executed thorough regression and integration testing for monitoring dashboards and alerting pipelines; ensured stable UAT and production rollouts.</p>
+          <div class="project-actions">
+            <a class="btn alt" href="#testcases-Integration" onclick="document.getElementById('accordion-Integration').scrollIntoView({behavior:'smooth'});">View Test Cases</a>
+            <a class="btn" href="#" onclick="window.open('https://github.com','_blank')">View repo</a>
+          </div>
         </div>
 
         <!-- Project 3 -->
-        <div class="project-card animate">
+        <div class="project-card" style="margin-bottom:4px">
           <h3>Mock Project – E-Commerce QA</h3>
-          <p><strong>Role:</strong> QA Engineer | <strong>Technologies:</strong> Selenium (Java), Postman, Jira</p>
-          <ul>
-            <li>Created test cases for user registration, product search, checkout, and payment modules.</li>
-            <li>Performed API testing for order management and inventory endpoints.</li>
-            <li>Logged and tracked defects ensuring full lifecycle closure.</li>
-            <li>Implemented basic automation scripts to validate repetitive flows.</li>
-          </ul>
-          <p><strong>Sample Test Cases:</strong></p>
-          <table role="table" aria-label="E-Commerce sample test cases">
-            <thead><tr><th>ID</th><th>Test Case</th><th>Expected Result</th></tr></thead>
-            <tbody>
-              <tr><td data-label="ID">TC201</td><td data-label="Test Case">Verify user registration with valid details</td><td data-label="Expected Result">User account created successfully</td></tr>
-              <tr><td data-label="ID">TC202</td><td data-label="Test Case">Validate product search returns correct results</td><td data-label="Expected Result">Search results match product keywords</td></tr>
-              <tr><td data-label="ID">TC203</td><td data-label="Test Case">Check checkout process with credit card</td><td data-label="Expected Result">Payment processed and order confirmed</td></tr>
-            </tbody>
-          </table>
+          <p><strong>Role:</strong> QA Engineer | <strong>Technologies:</strong> Selenium (Java), Postman, JIRA</p>
+          <p style="color:var(--muted)">Prepared functional and regression checks for checkout, catalog, and order lifecycle flows; supported automation for key customer journeys.</p>
+        </div>
+
+        <!-- TEST CASES ACCORDION -->
+        <div class="card" style="margin-top:18px">
+          <h2 class="section-title">Test Cases</h2>
+          <div class="accordion" id="testcases-accordion">
+
+            <!-- 1: Edge Cases -->
+            <div class="accordion-item" id="accordion-Edge-Cases">
+              <button class="accordion-button" aria-expanded="false" aria-controls="content-Edge-Cases" onclick="toggleAccordion('content-Edge-Cases', this)">
+                1 — Edge Cases (boundary-analysis.md & input-validation.md)
+                <span class="chev">▸</span>
+              </button>
+              <div id="content-Edge-Cases" class="accordion-content" role="region" aria-labelledby="accordion-Edge-Cases">
+                <!-- boundary-analysis.md expanded test cases -->
+                <div class="tc">
+                  <h4>EC-BND-01: Login Field Length Boundary</h4>
+                  <div class="meta-row"><div>Priority: High</div><div>Type: Boundary</div><div>Area: Authentication</div></div>
+                  <ol>
+                    <li>Preconditions: User signup page available; DB accessible.</li>
+                    <li>Steps: Enter username with 1 char; attempt signup -> observe validation. Repeat with max allowed length (e.g., 255 chars) and with 256 chars.</li>
+                    <li>Expected: 1-char and mid-range input accepted; 255 accepted if within limit; 256 rejected with clear error; no server error or truncation.</li>
+                    <li>Notes: Verify DB stores full string and UI shows full value without overflow.</li>
+                  </ol>
+                </div>
+
+                <div class="tc">
+                  <h4>EC-BND-02: Numeric Field Upper Bound (Quantity)</h4>
+                  <div class="meta-row"><div>Priority: Medium</div><div>Type: Boundary</div><div>Area: Orders</div></div>
+                  <ol>
+                    <li>Preconditions: Order creation UI and API available.</li>
+                    <li>Steps: Submit order with quantity 0, 1, large number (10,000), and max-int+1; observe response.</li>
+                    <li>Expected: 0 rejected if not allowed; normal range accepted; server rejects overflow with 4xx and informative message; no DB corruption.</li>
+                  </ol>
+                </div>
+
+                <div class="tc">
+                  <h4>EC-IV-01: Input Validation – Special Characters</h4>
+                  <div class="meta-row"><div>Priority: High</div><div>Type: Validation</div><div>Area: User Input</div></div>
+                  <ol>
+                    <li>Preconditions: Form accepts free-text inputs (name, comments).</li>
+                    <li>Steps: Submit entries with <, >, ', ", SQL meta-characters, very long multibyte strings.</li>
+                    <li>Expected: UI sanitizes or rejects dangerous characters; backend returns validation errors for prohibited inputs; no XSS or SQL injection possible.</li>
+                    <li>Verification: Inspect network payloads and stored values to ensure encoded or rejected characters.</li>
+                  </ol>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- 2: State Transition -->
+            <div class="accordion-item" id="accordion-State-Transition">
+              <button class="accordion-button" aria-expanded="false" aria-controls="content-State-Transition" onclick="toggleAccordion('content-State-Transition', this)">
+                2 — State Transition (order-workflow.md & user-account.md)
+                <span class="chev">▸</span>
+              </button>
+              <div id="content-State-Transition" class="accordion-content">
+                <div class="tc">
+                  <h4>ST-ORD-01: Order Lifecycle – Pending → Confirmed → Shipped → Delivered</h4>
+                  <div class="meta-row"><div>Priority: High</div><div>Type: Workflow</div></div>
+                  <ol>
+                    <li>Preconditions: Order API with state transitions and webhook/notification system active.</li>
+                    <li>Steps: Create order (Pending), trigger payment to move to Confirmed, simulate fulfillment -> move to Shipped, then mark Delivered.</li>
+                    <li>Expected: Each state transition only allowed from previous valid state, timestamps and audit trail captured, notifications fired, and UI reflects state.</li>
+                  </ol>
+                </div>
+
+                <div class="tc">
+                  <h4>ST-ACC-01: User Account Activation & Password Reset Flow</h4>
+                  <div class="meta-row"><div>Priority: Medium</div><div>Type: State & Security</div></div>
+                  <ol>
+                    <li>Preconditions: New user signup and password reset endpoints available.</li>
+                    <li>Steps: Register new user -> verify activation email link expired vs valid; request password reset -> use token; attempt reuse of token.</li>
+                    <li>Expected: Activation works only once; expired tokens rejected; reused tokens invalidated; audit logs include IP & timestamp.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3: Data Integrity -->
+            <div class="accordion-item" id="accordion-Data-Integrity">
+              <button class="accordion-button" aria-expanded="false" aria-controls="content-Data-Integrity" onclick="toggleAccordion('content-Data-Integrity', this)">
+                3 — Data Integrity (file-upload.md & data-corruption.md)
+                <span class="chev">▸</span>
+              </button>
+              <div id="content-Data-Integrity" class="accordion-content">
+                <div class="tc">
+                  <h4>DI-FU-01: File Upload – Size & Type Validation</h4>
+                  <div class="meta-row"><div>Priority: High</div><div>Type: Functional</div></div>
+                  <ol>
+                    <li>Preconditions: Upload endpoint with file-type whitelist and size limit (e.g., 10MB).</li>
+                    <li>Steps: Upload allowed type within limit; upload disallowed type; upload file slightly over limit; upload corrupted file stream.</li>
+                    <li>Expected: Allowed files succeed; disallowed types rejected with proper code; oversized rejects with message; corrupted stream handled gracefully without server crash.</li>
+                  </ol>
+                </div>
+
+                <div class="tc">
+                  <h4>DI-DC-01: Data Corruption – Simulate Partial Writes</h4>
+                  <div class="meta-row"><div>Priority: Medium</div><div>Type: Resilience</div></div>
+                  <ol>
+                    <li>Preconditions: Backend storage and atomic write operations available.</li>
+                    <li>Steps: Simulate network interruption during record write; read record after interruption.</li>
+                    <li>Expected: System either rolls back or marks record as inconsistent for remediation; no silent partial writes that break referential integrity.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4: Security -->
+            <div class="accordion-item" id="accordion-Security">
+              <button class="accordion-button" aria-expanded="false" aria-controls="content-Security" onclick="toggleAccordion('content-Security', this)">
+                4 — Security (authorization.md & input-sanitization.md)
+                <span class="chev">▸</span>
+              </button>
+              <div id="content-Security" class="accordion-content">
+                <div class="tc">
+                  <h4>SEC-AUTH-01: Authorization – Role-Based Access Control</h4>
+                  <div class="meta-row"><div>Priority: High</div><div>Type: Security</div></div>
+                  <ol>
+                    <li>Preconditions: Users with roles (admin, manager, user) exist.</li>
+                    <li>Steps: Attempt admin-only action as regular user via UI and direct API call; attempt manager-level action as user.</li>
+                    <li>Expected: Unauthorized attempts receive 403; no privilege escalation; logs record attempts.</li>
+                  </ol>
+                </div>
+
+                <div class="tc">
+                  <h4>SEC-INS-01: Input Sanitization – Prevent XSS & Injection</h4>
+                  <div class="meta-row"><div>Priority: High</div><div>Type: Security</div></div>
+                  <ol>
+                    <li>Preconditions: Inputs stored and rendered in UI (comments, product names).</li>
+                    <li>Steps: Submit payloads containing script tags, event handlers, JSON with injection patterns.</li>
+                    <li>Expected: UI escapes content or rejects unsafe input; no script execution; server uses parameterized queries.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5: Integration -->
+            <div class="accordion-item" id="accordion-Integration">
+              <button class="accordion-button" aria-expanded="false" aria-controls="content-Integration" onclick="toggleAccordion('content-Integration', this)">
+                5 — Integration (failure-scenarios.md)
+                <span class="chev">▸</span>
+              </button>
+              <div id="content-Integration" class="accordion-content">
+                <div class="tc">
+                  <h4>INT-FS-01: Downstream Service Failure – Retry & Circuit Breaker</h4>
+                  <div class="meta-row"><div>Priority: High</div><div>Type: Integration</div></div>
+                  <ol>
+                    <li>Preconditions: App depends on external pricing API with retry logic and circuit breaker.</li>
+                    <li>Steps: Simulate 500/504 from service; verify retry behavior, circuit open after threshold, fallback values used if configured.</li>
+                    <li>Expected: Retries attempted up to limit, circuit opens and prevents cascading retries, user sees meaningful message or fallback content.</li>
+                  </ol>
+                </div>
+
+                <div class="tc">
+                  <h4>INT-FS-02: Message Queue Processing Failure</h4>
+                  <div class="meta-row"><div>Priority: Medium</div><div>Type: Integration/Recovery</div></div>
+                  <ol>
+                    <li>Preconditions: System consumes messages from queue and performs idempotent operations.</li>
+                    <li>Steps: Force handler to throw on first attempt; ensure message moves to DLQ after N retries; reprocess DLQ message.</li>
+                    <li>Expected: Failed message does not block queue; DLQ contains diagnostics; reprocessing succeeds or is remedied with repeatable outcome.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6: Usability -->
+            <div class="accordion-item" id="accordion-Usability">
+              <button class="accordion-button" aria-expanded="false" aria-controls="content-Usability" onclick="toggleAccordion('content-Usability', this)">
+                6 — Usability (user-experience.md)
+                <span class="chev">▸</span>
+              </button>
+              <div id="content-Usability" class="accordion-content">
+                <div class="tc">
+                  <h4>US-UX-01: Onboarding Flow Completeness</h4>
+                  <div class="meta-row"><div>Priority: Medium</div><div>Type: Usability</div></div>
+                  <ol>
+                    <li>Preconditions: New user onboarding flow with tooltips and progress steps.</li>
+                    <li>Steps: Complete onboarding as new user; skip steps; return later; test on mobile/desktop.</li>
+                    <li>Expected: Onboarding resumes correctly; skip doesn't lead to data inconsistency; tooltips readable and accessible.</li>
+                  </ol>
+                </div>
+
+                <div class="tc">
+                  <h4>US-UX-02: Performance Perception – First Contentful Paint</h4>
+                  <div class="meta-row"><div>Priority: Low</div><div>Type: Performance/UX</div></div>
+                  <ol>
+                    <li>Preconditions: Main page publicly accessible.</li>
+                    <li>Steps: Load page on various device/network speeds; measure FCP and LCP.</li>
+                    <li>Expected: FCP within acceptable threshold for 3G; skeleton screens or placeholders present to improve perceived performance.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </section>
     </main>
 
     <footer class="animate" role="contentinfo">
-      © <span id="year"></span> Seelam Durga Kiran — Built with care • <span style="color:var(--muted)">Rajahmundry, India</span>
+      © <span id="year"></span> Seelam Durga Kiran — Rajahmundry, India
     </footer>
   </div>
 
   <script>
-    // small enhancements: current year
+    // fill year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Fade-in on scroll for .animate elements
+    // reveal animations
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) e.target.classList.add('show');
-      });
-    }, { threshold: 0.15 });
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.animate').forEach(el=>io.observe(el));
 
-    document.querySelectorAll('.animate').forEach(el => io.observe(el));
+    // Accordion toggle
+    function toggleAccordion(id, btn){
+      const content = document.getElementById(id);
+      const isOpen = content.classList.contains('open');
+      // Close all siblings (single-open behavior)
+      document.querySelectorAll('.accordion-content').forEach(c=>{ c.classList.remove('open'); c.previousElementSibling.setAttribute('aria-expanded','false'); });
+      if(!isOpen){
+        content.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+        // smooth scroll into view when opened
+        setTimeout(()=>content.scrollIntoView({behavior:'smooth',block:'center'}),120);
+      } else {
+        btn.setAttribute('aria-expanded','false');
+      }
+    }
 
-    // keyboard accessible focus for buttons/links
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('keydown', (ev) => {
-        if (ev.key === 'Enter') el.click();
+    // Make accordion buttons keyboard friendly
+    document.querySelectorAll('.accordion-button').forEach(b=>{
+      b.addEventListener('keydown', (e)=>{
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); b.click(); }
       });
     });
 
-    // ensure tables have data-label attributes for responsive mode
+    // Attach data-labels for responsive tables if any
     document.querySelectorAll('table').forEach(tbl=>{
       const ths = Array.from(tbl.querySelectorAll('thead th')).map(h=>h.textContent.trim());
       tbl.querySelectorAll('tbody tr').forEach(tr=>{
-        tr.querySelectorAll('td').forEach((td,i)=>{
-          td.setAttribute('data-label', ths[i] || '');
-        });
+        tr.querySelectorAll('td').forEach((td,i)=> td.setAttribute('data-label', ths[i] || ''));
       });
     });
   </script>
